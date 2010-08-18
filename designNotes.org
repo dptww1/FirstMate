@@ -1,0 +1,120 @@
+* REQUIREMENTS
+** Track Turn
+** Track each ship's movement, fire, marine fire, and signal plots for the current turn
+** Track information visibility
+
+* ROLES
+** Admin
+Always has R/W access to everything.
+
+** Squadron Commander - runs a group of ships (can ships belong to more than one group?)
+
+** Captain - runs a single ship
+Always has R/W access to own ship.
+
+** Guest
+
+* DATA MODEL
+** Role (lookup)
+|------+-----+----------------------------------------|
+| Name | Key | Notes                                  |
+|------+-----+----------------------------------------|
+| id   | PK  |                                        |
+| name |     | SiteAdmin, GameAdmin, Admiral, Captain |
+|------+-----+----------------------------------------|
+
+** Side (lookup)
+|------+-----+-----------------|
+| Name | Key | Notes           |
+|------+-----+-----------------|
+| id   | PK  |                 |
+| name |     | Britain, France |
+|------+-----+-----------------|
+
+** Game
+|---------------+-----+---------------------|
+| Name          | Key |                     |
+|---------------+-----+---------------------|
+| id            | PK  |                     |
+| name          |     |                     |
+| turn          |     | current turn        |
+| deadline      |     | deadline for orders |
+| deadline type |     | "Movement", "Fire"  |
+|---------------+-----+---------------------|
+
+** GameSides (join table)
+|---------+-----+------------|
+| Name    | Key |            |
+|---------+-----+------------|
+| game id | PFK | -> Game.id |
+| side id | PFK | -> Side.id | 
+| seq     |     | ordering   |  
+|---------+-----+------------|
+
+** Player
+|-------+-----+------------------|
+| Name  | Key | Notes            |
+|-------+-----+------------------|
+| id    | PK  |                  |
+| name  |     |                  |
+| email |     | multiple emails? |
+| ...   |     |                  |
+|-------+-----+------------------|
+
+** PlayerGameRole (join table)
+|-----------+-----+--------------|
+| Name      | Key | Notes        |
+|-----------+-----+--------------|
+| game id   | PFK | -> Game.id   |
+| player id | PFK | -> Player.id |
+| role id   | PFK | -> Role.id   |
+|-----------+-----+--------------|
+
+** Ship
+|--------+-----+----------------------|
+| Name   | Key | Notes                |
+|--------+-----+----------------------|
+| id     | PK  |                      |
+| side   |     | ?"Britain", "France" |
+| name   |     | "Victory", "Achille" |
+| rating |     | "100", "120", "74L"  |
+| ...    |     |                      |
+|--------+-----+----------------------|
+
+** Squadron
+|---------------+-----+--------------------|
+| Name          | Key | Notes              |
+|---------------+-----+--------------------|
+| id            | PK  |                    |
+| game id       | FK  | -> Game.id         |
+| side          |     |                    |
+| name          |     |                    |
+| user_assigned |     | if 1, is deletable |
+|---------------+-----+--------------------|
+
+** SquadronShips (join table)
+|-------------+-----+----------------|
+| Name        | Key | Notes          |
+|-------------+-----+----------------|
+| squadron id | PFK | -> Squadron.id |
+| ship id     | PFK | -> Ship.id     |
+|-------------+-----+----------------|
+
+** MovePlot
+|----------+-----+-------------------------------|
+| Name     | Key | Notes                         |
+|----------+-----+-------------------------------|
+| id       | PK  |                               |
+| game id  | FK  | -> Game.id                    |
+| turn     |     |                               |
+| ship id  | FK  | -> Ship.id                    |
+| plot     |     | "4", "P1"                     |
+| start ss |     | PS, MS, FS, Furled, Dismasted |
+| cs1      |     |                               |
+| cs2      |     |                               |
+| cs3      |     |                               |
+| cs4      |     |                               |
+| csm      |     |                               |
+| end ss   |     | PS, MS, FS, Furled, Dismasted |
+|----------+-----+-------------------------------|
+   
