@@ -1,5 +1,9 @@
 FirstMate::Application.routes.draw do |map|
-  root :to => "home#index"
+  devise_for :users
+
+  resources :games
+
+  root :to => "games#index"
 
   get "home/index"
 

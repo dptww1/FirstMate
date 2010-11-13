@@ -7,7 +7,7 @@
 ** Admin
 Always has R/W access to everything.
 
-** Squadron Commander - runs a group of ships (can ships belong to more than one group?)
+** Squadron Commander - runs a group of ships (can ships be in more than one group?)
 
 ** Captain - runs a single ship
 Always has R/W access to own ship.
@@ -52,14 +52,15 @@ Always has R/W access to own ship.
 |---------+-----+------------|
 
 ** Player
-|-------+-----+------------------|
-| Name  | Key | Notes            |
-|-------+-----+------------------|
-| id    | PK  |                  |
-| name  |     |                  |
-| email |     | multiple emails? |
-| ...   |     |                  |
-|-------+-----+------------------|
+|----------+-----+-------------------|
+| Name     | Key | Notes             |
+|----------+-----+-------------------|
+| id       | PK  |                   |
+| name     |     |                   |
+| email    |     | multiple emails?  |
+| timezone |     | "EST", "EDT", ... |
+| ...      |     |                   |
+|----------+-----+-------------------|
 
 ** PlayerGameRole (join table)
 |-----------+-----+--------------|
@@ -68,6 +69,7 @@ Always has R/W access to own ship.
 | game id   | PFK | -> Game.id   |
 | player id | PFK | -> Player.id |
 | role id   | PFK | -> Role.id   |
+| side id   | PFK | -> Side.id   |
 |-----------+-----+--------------|
 
 ** Ship
@@ -118,3 +120,62 @@ Always has R/W access to own ship.
 | end ss   |     | PS, MS, FS, Furled, Dismasted |
 |----------+-----+-------------------------------|
    
+* STORY
+
+** GUEST USER EXPERIENCE
+
+Andre is interested in Close Action and decides to check out FM.  He goes to the
+website and sees the MAIN PAGE.
+
+As Andre's not a logged-in user he has only anonymous access to the site.  He
+sees a list of games in progress, and a list of completed games.
+
+In Progress games look like: 
+    Game Name | Turn XXX | Move Orders due Tue 2011-02-08 11:00 EST
+
+Completed games look like: 
+    Game Name | Turn XXX | Notes
+
+He clicks on a game name, which takes him to the GAME PAGE.
+
+The GAME PAGE shows a list of the ships involved in that particular game.
+
+    Ship Name | Rating | Player Name
+
+in two columns, one per side (e.g. British in column 1, French in column 2).  
+
+The tables within the columns should be sortable, so all unassigned ships can
+be grouped, or the ship names can be alphabetized.
+
+Andre clicks on a ship name, which takes him to the SHIP PAGE.
+
+The SHIP PAGE shows a turn-by-turn list of all the orders for that ship in
+that game.
+
+Andre clicks [Back] to go back to the GAME PAGE, then [Back] again to get to the
+MAIN PAGE.
+
+There's no way to start a game without registering, so Andre clicks "Register"
+and signs up.  
+
+** REGISTRATION PROCESS
+
+[TODO: registration process]
+
+** REGISTERED USER EXPERIENCE
+
+Now that Andre's registered, the MAIN PAGE has two new sections, "My In Progress
+Games" and "My Completed Games".  Both are currently empty.
+
+The "Start a New Game" button is now available.  Andre clicks it and goes to 
+the NEW GAME page.
+
+** NEW GAME PAGE
+
+*** Fields
+
+- Name
+- Scenario
+
+
+
