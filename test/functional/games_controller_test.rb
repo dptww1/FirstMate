@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
   setup do
-    @game = games(:one)
+    @game = games(:Game1)
   end
 
   test "should get index" do

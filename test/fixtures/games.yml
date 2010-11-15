@@ -6,7 +6,7 @@ Game1:
   sides: Britain, France
   turn: 12
   deadline: 2010-06-01 13:00:00
-  deadline_type_id: 2
+  deadline_type_id: 1
 
 Game2:
   name: The Nile I
@@ -14,7 +14,7 @@ Game2:
   sides: Britain, France
   turn: 9
   deadline: 2010-08-18 15:00:00
-  deadline_type_id: 1
+  deadline_type_id: 0
 
 Game3:
   name: Cape Vinny
@@ -22,7 +22,7 @@ Game3:
   sides: Britain, Spain
   turn: 7
   deadline: 2010-08-20 15:45:00
-  deadline_type_id: 2
+  deadline_type_id: 1
 
 Game4:
   name: Take That, Hamlet!
@@ -30,7 +30,7 @@ Game4:
   sides: Britain, Denmark
   turn: 5
   deadline: 2010-09-20 16:00:00
-  deadline_type_id: 1
+  deadline_type_id: 0
 
 Game5:
   name: The Big One
@@ -38,7 +38,7 @@ Game5:
   sides: Britain, Allies
   turn: 3
   deadline: 2010-10-20 17:30:00
-  deadline_type_id: 2
+  deadline_type_id: 1
 
 Game6:
   name: The Nile II
@@ -46,4 +46,4 @@ Game6:
   sides: Britain, France
   turn: 1
   deadline: 2010-11-02 08:00:00
-  deadline_type_id: 1
+  deadline_type_id: 0

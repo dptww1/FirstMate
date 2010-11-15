@@ -42,7 +42,7 @@ Always has R/W access to own ship.
 | deadline type |     | "Movement", "Fire"  |
 |---------------+-----+---------------------|
 
-** GameSides (join table)
+** GamesSides (join table)
 |---------+-----+------------|
 | Name    | Key |            |
 |---------+-----+------------|
@@ -51,7 +51,7 @@ Always has R/W access to own ship.
 | seq     |     | ordering   |  
 |---------+-----+------------|
 
-** Player
+** Users
 |----------+-----+-------------------|
 | Name     | Key | Notes             |
 |----------+-----+-------------------|
@@ -62,15 +62,15 @@ Always has R/W access to own ship.
 | ...      |     |                   |
 |----------+-----+-------------------|
 
-** PlayerGameRole (join table)
-|-----------+-----+--------------|
-| Name      | Key | Notes        |
-|-----------+-----+--------------|
-| game id   | PFK | -> Game.id   |
-| player id | PFK | -> Player.id |
-| role id   | PFK | -> Role.id   |
-| side id   | PFK | -> Side.id   |
-|-----------+-----+--------------|
+** UsersGamesRoles (join table)
+|---------+-----+--------------|
+| Name    | Key | Notes        |
+|---------+-----+--------------|
+| game id | PFK | -> Game.id   |
+| user id | PFK | -> Player.id |
+| role id | PFK | -> Role.id   |
+| side id | PFK | -> Side.id   |
+|---------+-----+--------------|
 
 ** Ship
 |--------+-----+----------------------|
