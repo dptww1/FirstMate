@@ -2,3 +2,6 @@
 * Verify Devise signon/signin/signout
 * Games index when signed on should filter games
 * Client-side table sorting
+
+Abandonment Point:
+First Cucumber test works

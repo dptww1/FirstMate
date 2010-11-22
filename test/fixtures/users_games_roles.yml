@@ -1,6 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-#Game1Admin:
-#  user_id: dave
-#  game_id: Game1
-#  role_id: 1      # <== What should this be?
+Game1Admin:
+  user: dave
+  game: game1
+  role_id: 1

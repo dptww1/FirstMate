@@ -1,37 +1,37 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-Dave:
+dave:
   email: townsend@patriot.net
   username: dave
 
-Paul:
+paul:
   email: dtownsend@k12.com
   username: paul
 
-Lori:
+lori:
   email: townsend@patriot.net
   username: lori
 
-Jeffrey:
+jeffrey:
   email: townsend@patriot.net
   username: jeffrey
 
-Michelle:
+michelle:
   email: townsend@patriot.net
   username: michelle
 
-Jim:
+jim:
   email: townsend@patriot.net
   username: jim
 
-Judy:
+judy:
   email: townsend@patriot.net
   username: judy
 
-Andy:
+andy:
   email: townsend@patriot.net
   username: andy
 
-Kate:
+kate:
   email: townsend@patriot.net
   username: kate

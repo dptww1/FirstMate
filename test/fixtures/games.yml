@@ -1,6 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-Game1:
+game1:
   name: G 1st of J
   scenario_name: Glorious First of June
   sides: Britain, France
@@ -8,7 +8,7 @@ Game1:
   deadline: 2010-06-01 13:00:00
   deadline_type_id: 1
 
-Game2:
+game2:
   name: The Nile I
   scenario_name: Aboukir Bay
   sides: Britain, France
@@ -16,7 +16,7 @@ Game2:
   deadline: 2010-08-18 15:00:00
   deadline_type_id: 0
 
-Game3:
+game3:
   name: Cape Vinny
   scenario_name: Cape St Vincent
   sides: Britain, Spain
@@ -24,7 +24,7 @@ Game3:
   deadline: 2010-08-20 15:45:00
   deadline_type_id: 1
 
-Game4:
+game4:
   name: Take That, Hamlet!
   scenario_name: Copenhagen
   sides: Britain, Denmark
@@ -32,7 +32,7 @@ Game4:
   deadline: 2010-09-20 16:00:00
   deadline_type_id: 0
 
-Game5:
+game5:
   name: The Big One
   scenario_name: Trafalgar
   sides: Britain, Allies
@@ -40,7 +40,7 @@ Game5:
   deadline: 2010-10-20 17:30:00
   deadline_type_id: 1
 
-Game6:
+game6:
   name: The Nile II
   scenario_name: Aboukir Bay
   sides: Britain, France

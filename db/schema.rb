@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(:version => 20101115035343) do
     t.integer "side_id"
   end
 
+  create_table "player_game_roles", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.integer  "role_id"
+    t.integer  "side_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "timezone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"

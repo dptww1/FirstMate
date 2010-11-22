@@ -31,3 +31,13 @@ gem 'db_populate'
 # group :test do
 #   gem 'webrat'
 # end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'launchy'
+end
