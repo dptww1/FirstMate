@@ -1,9 +1,15 @@
-* Verify Devise signon/signin/signout
-* Games index when signed on should filter games
-* Client-side table sorting
-* need Flash or not?
+-*- Mode: org -*-
 
-Abandonment Point:
+* General
+** need Flash or not?
 
+* Devise
+** Verify Devise signon/signin/signout
 
-2010-11-23 Cucumber build out, can create game; selects working
+* Games index
+** when signed on should filter games
+** Client-side table sorting
+
+* History
+
+2010-11-23 Cucumber build out, can create game; timestamp <select>s working; timezones

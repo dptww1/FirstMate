@@ -3,7 +3,7 @@ Given /^I have (?:a )?games? titled (\S+(?:,\s*\S+)*)$/ do |titles|
     Game.create!(:name => title, 
                  :scenario_name => "#{title} Scen",
                  :turn => 1, 
-                 :deadline => Date.today, 
+                 :deadline => Time.gm(Date.today.year, 'Dec', 20, 14, 30),
                  :deadline_type => DeadlineType.find(0)
                  )
   end

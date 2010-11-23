@@ -4,10 +4,11 @@ end
 
 Given /^the following user records$/ do |table|
   table.hashes.each do |h|
-    User.create!(:username => h["username"],
-                 :password => h["password"], 
+    User.create!(:username              => h["username"],
+                 :password              => h["password"], 
                  :password_confirmation => h["password"],
-                 :email => h["email"])
+                 :email                 => h["email"],
+                 :timezone              => h["timezone"])
   end
 end
 

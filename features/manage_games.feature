@@ -38,9 +38,9 @@ Feature: Manage Games
     When I follow "New Game"
     And I fill in "Name" with "Test New Game"
     And I fill in "Turn" with "1"
-#    And I select "2011" from "game_deadline_1i"
     And I set the "game_deadline" timestamp to "2010-11-23 10:30"
     And I select "Move Orders" from "game_deadline_type_id"
     And I press "Create Game"
 
     Then I should see "Game was successfully created."
+    And I should see "Test New Game"

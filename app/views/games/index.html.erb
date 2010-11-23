@@ -17,9 +17,8 @@
     <td><%= game.name %></td>
     <td><%= game.scenario_name %></td>
     <td><%= game.turn %></td>
-    <td><%= game.deadline %></td>
+    <td><%= game.deadline.to_s(:dpt_std) %></td>
     <td><%= game.deadline_type.name %></td>
-    <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Delete', game, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
