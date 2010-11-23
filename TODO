@@ -1,7 +1,9 @@
-* Fix unit testing
 * Verify Devise signon/signin/signout
 * Games index when signed on should filter games
 * Client-side table sorting
+* need Flash or not?
 
 Abandonment Point:
-First Cucumber test works
+
+
+2010-11-23 Cucumber build out, can create game; selects working

@@ -1,3 +1,8 @@
+<% @date_opts_hash = {} %>
+<% @date_opts_hash[:use_month_numbers] = true %>
+<% @date_opts_hash[:start_year       ] = Time.now.year %>
+<% @date_opts_hash[:end_year         ] = Time.now.year + 1 %>
+
 <%= form_for(@game) do |f| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +18,7 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_area :name %>
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :turn %><br />
@@ -21,11 +26,11 @@
   </div>
   <div class="field">
     <%= f.label :deadline %><br />
-    <%= f.datetime_select :deadline %>
+    <%= f.datetime_select :deadline, @date_opts_hash %>
   </div>
   <div class="field">
     <%= f.label :deadline_type %><br />
-    <%= f.text_field :deadline_type %>
+    <%= collection_select(:game, :deadline_type_id, DeadlineType.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
