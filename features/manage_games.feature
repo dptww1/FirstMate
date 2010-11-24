@@ -17,10 +17,10 @@ Feature: Manage Games
       And I have a game titled "The Nile II" created by "dave"
     When I go to the list of games
     Then I should see "The Nile"
-    Then I should see "Cape Vinny"
-    Then I should see "Take That, Hamlet!"
-    Then I should see "The Big One"
-    Then I should see "The Nile II"
+     And I should see "Cape Vinny"
+     And I should see "Take That, Hamlet!"
+     And I should see "The Big One"
+     And I should see "The Nile II"
 
 
   Scenario: Cannot Create Game when Not Signed In
