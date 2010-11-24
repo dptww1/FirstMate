@@ -3,44 +3,53 @@ Feature: Manage Games
   As a user
   I want to create and manage games
 
+  Background:
+    Given the following user records
+      | username | password | email                |
+      | dave     | davepw   | townsend@patriot.net |
+      | paul     | paulpw   | townsend@patriot.net |
+
   Scenario: Games List
-    Given I have games titled TheNileI, CapeVinny, TakeThatHamlet!, TheBigOne, TheNileII, G1stOfJ
+    Given I have a game titled "The Nile" created by "dave"
+      And I have a game titled "Cape Vinny" created by "paul"
+      And I have a game titled "Take That, Hamlet!" created by "dave"
+      And I have a game titled "The Big One" created by "paul"
+      And I have a game titled "The Nile II" created by "dave"
     When I go to the list of games
-    Then I should see "TheNileI"
-    Then I should see "CapeVinny"
-    Then I should see "TakeThatHamlet!"
-    Then I should see "TheBigOne"
-    Then I should see "TheNileII"
-    Then I should see "G1stOfJ"
+    Then I should see "The Nile"
+    Then I should see "Cape Vinny"
+    Then I should see "Take That, Hamlet!"
+    Then I should see "The Big One"
+    Then I should see "The Nile II"
+
 
   Scenario: Cannot Create Game when Not Signed In
     Given I am not signed in
-    And I am on the list of games
+
+    When I go to the list of games
+
     Then I should not see "New Game"
 
+
   Scenario: Can Create Game when Signed In
-    Given the following user records
-    | username | password | email                |
-    | dave     | davepw   | townsend@patriot.net |
-    And I am signed in as "dave" with password "davepw"
+    Given I am signed in as "dave" with password "davepw"
 
     When I go to the list of games
 
     Then I should see "New Game"
 
+
   Scenario: Create Valid Game
-    Given the following user records
-    | username | password | email                |
-    | dave     | davepw   | townsend@patriot.net |
-    And I am signed in as "dave" with password "davepw"
-    And I am on the list of games
+    Given I am signed in as "dave" with password "davepw"
+      And I am on the list of games
 
     When I follow "New Game"
-    And I fill in "Name" with "Test New Game"
-    And I fill in "Turn" with "1"
-    And I set the "game_deadline" timestamp to "2010-11-23 10:30"
-    And I select "Move Orders" from "game_deadline_type_id"
-    And I press "Create Game"
+     And I fill in "Name" with "Test New Game"
+     And I fill in "Scenario" with "FOO"
+     And I fill in "Turn" with "1"
+     And I set the "game_deadline" timestamp to "2010-11-23 10:30"
+     And I select "Move Orders" from "game_deadline_type_id"
+     And I press "Create Game"
 
     Then I should see "Game was successfully created."
-    And I should see "Test New Game"
+     And I should see "Test New Game"

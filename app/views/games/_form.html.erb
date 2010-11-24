@@ -20,18 +20,27 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :scenario_name, "Scenario" %><br />
+    <%= f.text_field :scenario_name %>
+  </div>
+
   <div class="field">
     <%= f.label :turn %><br />
     <%= f.text_field :turn %>
   </div>
+
   <div class="field">
     <%= f.label :deadline %><br />
     <%= f.datetime_select :deadline, @date_opts_hash %> UTC
   </div>
+
   <div class="field">
     <%= f.label :deadline_type %><br />
     <%= collection_select(:game, :deadline_type_id, DeadlineType.all, :id, :name) %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
