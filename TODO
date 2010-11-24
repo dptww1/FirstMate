@@ -12,4 +12,5 @@
 
 * History
 
+2010-11-24 Game/User validations, added scenario name to game editing
 2010-11-23 Cucumber build out, can create game; timestamp <select>s working; timezones
