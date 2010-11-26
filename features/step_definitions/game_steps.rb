@@ -11,7 +11,7 @@
 
 Given /^I have a game titled "([^"]*)" created by "([^"]*)"$/ do |title, username|
   Game.create!(:name => title,
-               :scenario_name => "#{title} Scen",
+               :scenario => Scenario.first(),
                :turn => 1,
                :deadline => Time.gm(Date.today.year, 'Dec', 20, 14, 30),
                :deadline_type => DeadlineType.find(0)

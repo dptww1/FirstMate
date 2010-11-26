@@ -23,11 +23,11 @@
 
   <div class="field">
     <% if edit_mode == :create %>
-      <%= f.label :scenario_name, "Scenario" %><br />
-      <%= f.text_field :scenario_name %>
+      <%= f.label :scenario, "Scenario" %><br />
+      <%= collection_select(:game, :scenario_id, Scenario.all, :id, :name) %>
     <% else %>
       Scenario<br />
-      <%= @game.scenario_name %>
+      <%= @game.scenario.name %>
     <% end %>
     </div>
 

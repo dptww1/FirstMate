@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123155152) do
+ActiveRecord::Schema.define(:version => 20101126205205) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20101123155152) do
     t.integer  "deadline_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "scenario_name"
+    t.integer  "scenario_id"
   end
 
   create_table "games_sides", :id => false, :force => true do |t|
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(:version => 20101123155152) do
   end
 
   create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scenarios", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

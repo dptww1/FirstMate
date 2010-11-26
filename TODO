@@ -6,9 +6,12 @@
 * Devise
 ** Verify Devise signon/signin/signout
 
-* Games index
-** when signed on should filter games
-** Client-side table sorting
+* Games 
+** index
+*** when signed on should filter games
+*** Client-side table sorting
+** edit
+*** after saving, go to index, not show screen
 
 * History
 

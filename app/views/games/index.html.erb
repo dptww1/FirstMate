@@ -15,7 +15,7 @@
 <% @games.each do |game| %>
   <tr>
     <td><%= game.name %></td>
-    <td><%= game.scenario_name %></td>
+    <td><%= game.scenario.name %></td>
     <td><%= game.turn %></td>
     <td><%= game.deadline.to_s(:dpt_std) %></td>
     <td><%= game.deadline_type.name %></td>

@@ -3,14 +3,16 @@ class Game < ActiveRecord::Base
   belongs_to :deadline_type
   has_many :users_games_roles
   has_many :users, :through => :users_games_roles
+  belongs_to :scenario
 
   validates :name,             :presence => true, :uniqueness => true
   validates :turn,             :presence => true, :numericality => true
   validates :deadline,         :presence => true
   validates :deadline_type_id, :presence => true
-  validates :scenario_name,    :presence => true
+  validates :scenario_id,      :presence => true
 
-  attr_accessible :name, :turn, :deadline, :deadline_type, :deadline_type_id, :scenario_name
+  attr_accessible :name, :turn, :deadline, :deadline_type, :scenario
+  attr_accessible :deadline_type_id, :scenario_id
   attr_accessible :users_games_roles
 
   scope :active, where("")

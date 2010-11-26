@@ -45,7 +45,7 @@ Feature: Manage Games
 
     When I follow "New Game"
      And I fill in "Name" with "Test New Game"
-     And I fill in "Scenario" with "FOO"
+     And I select "Test Seven Ship Game" from "game_scenario_id"
      And I fill in "Turn" with "1"
      And I set the "game_deadline" timestamp to "2010-11-23 10:30"
      And I select "Move Orders" from "game_deadline_type_id"
