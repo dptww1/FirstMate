@@ -22,9 +22,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :scenario_name, "Scenario" %><br />
-    <%= f.text_field :scenario_name %>
-  </div>
+    <% if edit_mode == :create %>
+      <%= f.label :scenario_name, "Scenario" %><br />
+      <%= f.text_field :scenario_name %>
+    <% else %>
+      Scenario<br />
+      <%= @game.scenario_name %>
+    <% end %>
+    </div>
 
   <div class="field">
     <%= f.label :turn %><br />
