@@ -13,15 +13,13 @@ class Game < ActiveRecord::Base
   attr_accessible :name, :turn, :deadline, :deadline_type, :deadline_type_id, :scenario_name
   attr_accessible :users_games_roles
 
-#  after_save :set_admin_user
-
   scope :active, where("")
 
   def self.active?
     where("deadline_type_id = 2 AND deadline >= ?", @deadline)
   end
 
-  def set_admin_user
-#    user_games_roles
+  def user_is_role(user, role_id)
+    users_games_roles.detect { |ugr| ugr.user_id = user.id && ugr.role_id = role_id }
   end
 end

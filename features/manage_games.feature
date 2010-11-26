@@ -52,4 +52,4 @@ Feature: Manage Games
      And I press "Create Game"
 
     Then I should see "Game was successfully created."
-     And I should see "Test New Game"
+     And I should see a row with "Test New Game" and then "Edit"
