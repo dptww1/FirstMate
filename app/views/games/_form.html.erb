@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= f.label :turn %><br />
-    <%= f.text_field :turn %>
+    <%= f.text_field :turn, :value => @game.turn || 1, :size => 3 %>
   </div>
 
   <div class="field">

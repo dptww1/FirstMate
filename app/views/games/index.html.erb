@@ -19,10 +19,12 @@
     <td><%= game.turn %></td>
     <td><%= game.deadline.to_s(:dpt_std) %></td>
     <td><%= game.deadline_type.name %></td>
+    <td><%= game.sides[0].name %></td>
+    <td><%= game.sides[1].name %></td>
     <% if game.user_is_role(@current_user, Role::GAME_ADMIN) %>
       <td><%= link_to 'Edit', edit_game_path(game) %></td>
+      <td><%= link_to 'Delete', game, :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %></td>
     <% end %>
-    <td><%= link_to 'Delete', game, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
