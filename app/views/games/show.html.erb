@@ -17,9 +17,16 @@
 
 <p>
   <b>Deadline type:</b>
-  <%= @game.deadline_type %>
+  <%= @game.deadline_type.name %>
+</p>
+
+<p>
+  <b><%= @game.sides[0].name %></b>
+</p>
+
+<p>
+  <b><%= @game.sides[1].name %></b>
 </p>
 
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

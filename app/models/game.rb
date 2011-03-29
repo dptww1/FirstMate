@@ -5,6 +5,8 @@ class Game < ActiveRecord::Base
   belongs_to :scenario
   has_many :games_sides
   has_many :sides, :through => :games_sides
+  has_many :games_sides_squadrons
+  has_many :squadrons, :through => :games_sides_squadrons
 
   validates :name,             :presence => true, :uniqueness => true
   validates :turn,             :presence => true, :numericality => true
@@ -18,6 +20,7 @@ class Game < ActiveRecord::Base
   attr_accessible :deadline_type_id, :scenario_id
   attr_accessible :users_games_roles
   attr_accessible :sides
+  attr_accessible :squadrons
 
   scope :active, where("")
 
@@ -26,7 +29,11 @@ class Game < ActiveRecord::Base
   end
 
   def user_is_role(user, role_id)
-    users_games_roles.detect { |ugr| ugr.user_id = user.id && ugr.role_id = role_id }
+    users_games_roles.detect { |ugr| ugr.user_id = user.id && ugr.role_id = role_id } if user
+  end
+
+  def squadrons_by_side(side)
+    squadrons.collect { |s| s.side == side }
   end
 
 private
@@ -34,6 +41,9 @@ private
   def set_up_from_scenario
     raise "can't set up game from nil scenario!" unless scenario
 
-    scenario.sides.each { |side| GamesSide.create!(:game_id => id, :side_id => side.id) }
+    scenario.sides.each do |side| 
+      GamesSide.create!(:game_id => id, :side_id => side.id)
+      
+    end
   end
 end

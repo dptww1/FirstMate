@@ -5,7 +5,7 @@ Then /^I should see a row with "([^"]*)" and then "([^"]*)"$/ do |str1, str2|
   # either not '<', or is '<' but is not then followed by the rest of a TR closing tag.
   not_tr_close = "(?:[^<]|<(?!/\s*[tT][rR]\s*>))*"
 
-  regexp = /<tr>#{not_tr_close}#{str1}#{not_tr_close}#{str2}#{not_tr_close}<\/tr>/m
+  regexp = /<tr[^>]*>#{not_tr_close}#{str1}#{not_tr_close}#{str2}#{not_tr_close}<\/tr>/m
 
   # It would be nice to 
   # This copied from web_steps::Then I should see /.../
@@ -19,6 +19,10 @@ Then /^I should see a row with "([^"]*)" and then "([^"]*)"$/ do |str1, str2|
     
     def matches?(needed_but_ignored)
       return @matches
+    end
+
+    def failure_message
+      "MatcherWrapper failed"
     end
   end
 

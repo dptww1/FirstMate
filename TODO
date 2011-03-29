@@ -1,7 +1,11 @@
 -*- Mode: org -*-
 
 * General
-** need Flash or not?
+** "rails generate model" makes test fixtures which I'm not using -- how to disable?
+** need Flash or not? devise seems to need it, rest of site doesn't
+** database.yml shouldn't be checked in (DUH)
+** Pickle 
+** Metric fu http://railscasts.com/episodes/166-metric-fu
 
 * Devise
 ** Verify Devise signon/signin/signout
@@ -10,6 +14,7 @@
 ** index
 *** when signed on should filter games
 *** Client-side table sorting
+*** deleting a game should show something in Flash
 
 * History
 

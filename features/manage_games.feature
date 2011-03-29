@@ -25,31 +25,37 @@ Feature: Manage Games
 
   Scenario: Cannot Create Game when Not Signed In
     Given I am not signed in
-
     When I go to the list of games
-
     Then I should not see "New Game"
 
 
   Scenario: Can Create Game when Signed In
     Given I am signed in as "dave" with password "davepw"
-
     When I go to the list of games
-
     Then I should see "New Game"
 
 
   Scenario: Create Valid Game
     Given I am signed in as "dave" with password "davepw"
       And I am on the list of games
-
     When I follow "New Game"
      And I fill in "Name" with "Test New Game"
      And I select "Test Seven Ship Game" from "game_scenario_id"
      And I fill in "Turn" with "1"
-     And I set the "game_deadline" timestamp to "2010-11-23 10:30"
+     And I set the "game_deadline" timestamp to "2011-01-23 10:30"
      And I select "Move Orders" from "game_deadline_type_id"
      And I press "Create Game"
-
     Then I should see "Game was successfully created."
-     And I should see a row with "Test New Game" and then "Edit"
+     And I should see a row with "Test New Game" and then "Delete"
+
+  Scenario: See Squadrons
+    Given I am signed in as "paul" with password "paulpw"
+      And I create the following game:
+      |name|scenario|
+      |Paul Test|Trafalgar|
+      And I am on the list of games
+     
+    When I follow "Paul Test"
+
+#    Then I should see "Fleet"
+

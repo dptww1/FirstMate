@@ -13,7 +13,19 @@ Given /^I have a game titled "([^"]*)" created by "([^"]*)"$/ do |title, usernam
   Game.create!(:name => title,
                :scenario => Scenario.first(),
                :turn => 1,
-               :deadline => Time.gm(Date.today.year, 'Dec', 20, 14, 30),
+               :deadline => Time.gm(2010, 'Dec', 20, 14, 30),
                :deadline_type => DeadlineType.find(0)
               )
+end
+
+Given /^I create the following games?:$/ do |table|
+  table.hashes.each_with_index do |h, i|
+    Game.create!(
+                 :name => h['name'] || "Game #{i}",
+                 :scenario => h['scenario'] ? Scenario.find_by_name(h['scenario']) : Scenario.first(),
+                 :turn => h['turn'] || 1,
+                 :deadline => Time.gm(2010, 'Dec', 20, 14, 30),
+                 :deadline_type => DeadlineType.find(0)
+                 )
+  end
 end

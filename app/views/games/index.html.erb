@@ -5,20 +5,19 @@
     <th>Name</th>
     <th>Scenario</th>
     <th>Turn</th>
+    <th>Next Step</th>
     <th>Deadline</th>
-    <th>Deadline type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Side 1 Status</th>
+    <th>Side 2 Status</th>
   </tr>
 
-<% @games.each do |game| %>
-  <tr>
-    <td><%= game.name %></td>
+<% @games.each_with_index do |game, rnum| %>
+  <tr class="<%= rnum % 2 == 0 ? 'odd' : 'even' %>">
+    <td><%= link_to game.name, edit_game_path(game) %></td>
     <td><%= game.scenario.name %></td>
-    <td><%= game.turn %></td>
-    <td><%= game.deadline.to_s(:dpt_std) %></td>
+    <td align="right"><%= game.turn %></td>
     <td><%= game.deadline_type.name %></td>
+    <td><%= game.deadline.to_s(:dpt_std) %></td>
     <td>
       <%= game.sides[0].name %>
       0
@@ -30,7 +29,6 @@
       /
     </td>
     <% if game.user_is_role(@current_user, Role::GAME_ADMIN) %>
-      <td><%= link_to 'Edit', edit_game_path(game) %></td>
       <td><%= link_to 'Delete', game, :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %></td>
     <% end %>
   </tr>
