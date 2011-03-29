@@ -1,0 +1,48 @@
+body {
+  font-size:   10pt;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+table {
+  border-width:     0px;
+  border-spacing:   0px;
+  border-style:     none;
+  border-color:     gray;
+  border-collapse:  collapse;
+  background-color: white;
+}
+
+tr.even {
+}
+
+tr.odd {
+  background-color: #eef;
+}
+
+th {
+  border-width:     1px;
+  padding:          2px 1em 2px 1em;
+  border-style:     dotted;
+  border-color:     gray;
+  text-align:       left;
+  color:            white;
+  background-color: black;
+}
+
+td {
+  border-width: 1px;
+  padding:      2px 1em 2px 1em;
+  border-style: dotted;
+  border-color: gray;
+}
+
+div#turnList {
+  display:        inline-block;
+  vertical-align: top;
+}
+
+div#shipList {
+  display:        inline-block;
+  padding-left:   1em;
+  vertical-align: top;
+}
