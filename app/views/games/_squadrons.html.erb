@@ -1,0 +1,17 @@
+<% squadrons.each do |sq| %>
+  <tr class="squadronName"><td colspan="2"><%= sq.name %></td></tr>
+  <% sq.squadrons_ships.each do |ss| %>
+    <tr>
+      <td>
+        <%= ss.name %>
+      </td>
+      <td>
+        <% if @current_user.id == ss.user_id %>
+          Enter Orders
+        <% else %>
+          Put orders here
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

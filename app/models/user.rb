@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
 
   has_many :users_games_roles
   has_many :games, :through => :users_games_roles
+  has_many :squadrons_ships
 end

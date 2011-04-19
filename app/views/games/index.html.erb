@@ -13,18 +13,18 @@
 
 <% @games.each_with_index do |game, rnum| %>
   <tr class="<%= rnum % 2 == 0 ? 'odd' : 'even' %>">
-    <td><%= link_to game.name, edit_game_path(game) %></td>
+    <td><%= link_to game.name, game_path(game) %></td>
     <td><%= game.scenario.name %></td>
     <td align="right"><%= game.turn %></td>
     <td><%= game.deadline_type.name %></td>
     <td><%= game.deadline.to_s(:dpt_std) %></td>
     <td>
-      <%= game.sides[0].name %>
+      <%= game.side1 %>
       0
       /
     </td>
     <td>
-      <%= game.sides[1].name %>
+      <%= game.side2 %>
       0
       /
     </td>

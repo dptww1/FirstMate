@@ -28,3 +28,17 @@ Then /^I should see a row with "([^"]*)" and then "([^"]*)"$/ do |str1, str2|
 
   page.should MatcherWrapper.new(regexp.match(page.body))
 end
+
+Then /^I should not see a row with "([^\"]*)" and then "([^\"]*)"$/ do |str1, str2|
+  should_throw = false
+
+  begin
+    Then "I should see a row with \"#{str1}\" and then \"#{str2}\""
+    should_throw = true
+  rescue RSpec::Expectations::ExpectationNotMetError
+    # Since we're reversing the sense of the test, this is actually the normal, expected path.
+    # So just swallow the exception.
+  end
+
+  raise RSpec::Expectations::ExpectationNotMetError if should_throw
+end

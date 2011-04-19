@@ -1,3 +1,6 @@
 class Squadron < ActiveRecord::Base
-  has_many :games, :through => :games_sides_squadrons
+  belongs_to :game
+  has_many   :squadrons_ships
+
+  attr_accessible :name, :squadrons_ships, :seq_num, :side
 end

@@ -1,32 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <b>Name:</b>
   <%= @game.name %>
-</p>
+  <br>
 
-<p>
   <b>Turn:</b>
   <%= @game.turn %>
-</p>
+  <br>
 
-<p>
   <b>Deadline:</b>
   <%= @game.deadline %>
-</p>
+  <br>
 
-<p>
   <b>Deadline type:</b>
   <%= @game.deadline_type.name %>
-</p>
+</div>
 
-<p>
-  <b><%= @game.sides[0].name %></b>
-</p>
+<table>
+  <tr class="sideName"><td colspan="2"><%= @game.side1 %></td></tr>
+  <%= render :partial => "squadrons", :locals => { :squadrons => @game.squadrons_by_side(@game.side1) } %>
 
-<p>
-  <b><%= @game.sides[1].name %></b>
-</p>
+  <tr class="sideName"><td colspan="2"><%= @game.side2 %></td></tr><br>
+  <%= render :partial => "squadrons", :locals => { :squadrons => @game.squadrons_by_side(@game.side2) } %>
+</table>
 
 
 <%= link_to 'Back', games_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101202143405) do
+ActiveRecord::Schema.define(:version => 20110418151450) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
@@ -24,19 +24,8 @@ ActiveRecord::Schema.define(:version => 20101202143405) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "scenario_id"
-  end
-
-  create_table "games_sides", :id => false, :force => true do |t|
-    t.integer "game_id"
-    t.integer "side_id"
-  end
-
-  create_table "games_sides_squadrons", :force => true do |t|
-    t.integer  "game_id"
-    t.integer  "side_id"
-    t.integer  "squadron_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "side1"
+    t.string   "side2"
   end
 
   create_table "roles", :force => true do |t|
@@ -69,20 +58,21 @@ ActiveRecord::Schema.define(:version => 20101202143405) do
     t.datetime "updated_at"
   end
 
-  create_table "sides", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "adjective"
-  end
-
   create_table "squadrons", :force => true do |t|
     t.integer  "game_id"
-    t.integer  "side_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "seq_num"
+    t.string   "side"
+  end
+
+  create_table "squadrons_ships", :force => true do |t|
+    t.integer  "squadron_id"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

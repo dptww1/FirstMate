@@ -19,6 +19,17 @@ tr.odd {
   background-color: #eef;
 }
 
+tr.sideName {
+  background-color: #000;
+  color:            #fff;
+  font-weight:      bold;
+}
+
+tr.squadronName {
+  font-style: italic;
+  font-weight: bold;
+}
+
 th {
   border-width:     1px;
   padding:          2px 1em 2px 1em;
@@ -34,6 +45,8 @@ td {
   padding:      2px 1em 2px 1em;
   border-style: dotted;
   border-color: gray;
+  font-size:    10pt;
+  font-family:  'Palatino Linotype', 'Book Antiqua', Palatino, serif;
 }
 
 div#turnList {

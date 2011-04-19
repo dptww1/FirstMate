@@ -2,11 +2,8 @@ class Game < ActiveRecord::Base
   belongs_to :deadline_type
   has_many :users_games_roles
   has_many :users, :through => :users_games_roles
+  has_many :squadrons
   belongs_to :scenario
-  has_many :games_sides
-  has_many :sides, :through => :games_sides
-  has_many :games_sides_squadrons
-  has_many :squadrons, :through => :games_sides_squadrons
 
   validates :name,             :presence => true, :uniqueness => true
   validates :turn,             :presence => true, :numericality => true
@@ -14,12 +11,10 @@ class Game < ActiveRecord::Base
   validates :deadline_type_id, :presence => true
   validates :scenario_id,      :presence => true
 
-  after_create :set_up_from_scenario
-
   attr_accessible :name, :turn, :deadline, :deadline_type, :scenario
   attr_accessible :deadline_type_id, :scenario_id
   attr_accessible :users_games_roles
-  attr_accessible :sides
+  attr_accessible :side1, :side2
   attr_accessible :squadrons
 
   scope :active, where("")
@@ -33,17 +28,6 @@ class Game < ActiveRecord::Base
   end
 
   def squadrons_by_side(side)
-    squadrons.collect { |s| s.side == side }
-  end
-
-private
-
-  def set_up_from_scenario
-    raise "can't set up game from nil scenario!" unless scenario
-
-    scenario.sides.each do |side| 
-      GamesSide.create!(:game_id => id, :side_id => side.id)
-      
-    end
+    squadrons.find_all { |s| s.side == side }.sort { |a,b| a.seq_num <=> b.seq_num }
   end
 end

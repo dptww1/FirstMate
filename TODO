@@ -1,5 +1,8 @@
 -*- Mode: org -*-
 
+* Logins
+ dave2/black123
+
 * General
 ** "rails generate model" makes test fixtures which I'm not using -- how to disable?
 ** need Flash or not? devise seems to need it, rest of site doesn't

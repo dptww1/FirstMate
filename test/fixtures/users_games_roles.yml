@@ -1,6 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-Game1Admin:
-  user: dave
-  game: game1
-  role_id: 1
