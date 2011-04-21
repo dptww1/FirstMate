@@ -22,14 +22,3 @@ Given /^I am signed in as "([^\"]+)" with password "([^\"]+)"$/ do |username, pa
   fill_in "Password", :with => password
   click_button "Sign in"
 end
-
-Given /^"([^\"]+)" is (Captain|Admiral) of "([^\"]+)" on (Side\d)$/ do |name, role, ship, side|
-  u = User.create!(:username => name, 
-                   :password => "xxx", 
-                   :password_confirmation => "xxx", 
-                   :email => "townsend@patriot.net", 
-                   :timezone => "Indiana (East)")
-  g = Game.order("created_at DESC")[0]  # assumes most recent game was created by earlier clause in feature
-  sq = g.squadrons_by_side(side)[0]
-  sq.squadrons_ships << SquadronsShip.new(:name => ship, :user_id => u.id)
-end

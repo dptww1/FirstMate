@@ -1,3 +1,7 @@
+def current_game
+  Game.order("created_at DESC")[0]  # assumes most recent game was created by earlier clause in feature
+end
+
 # Given /^I have (?:a )?games? titled (\S+(?:,\s*\S+)*)$/ do |titles|
 #   titles.split(/\s*,\s*/).each do |title|
 #     Game.create!(:name => title, 
@@ -38,10 +42,38 @@ Given /^I create the following games?:$/ do |table|
   end
 end
 
-Given /^the orders deadline for "([^\"]+)" is (\d+) days? (away|expired)$/ do |game_name, ndays, dir|
-  ndays = ndays.to_i
-  ndays = -ndays if dir == "expired"
+# Given /^the orders deadline for "([^\"]+)" is (\d+) days? (away|expired)$/ do |game_name, ndays, dir|
+#   ndays = ndays.to_i
+#   ndays = -ndays if dir == "expired"
 
-  g = Game.where("name = ?", game_name).first()
-  g.update_attribute(:deadline, Date.today + ndays)
+#   g = Game.where("name = ?", game_name).first()
+#   g.update_attribute(:deadline, Date.today + ndays)
+# end
+
+Given /^"([^\"]+)" is (Captain|Admiral) of "([^\"]+)" on (Side\d)$/ do |name, role, ship, side|
+  u = User.create!(:username => name, 
+                   :password => "xxx", 
+                   :password_confirmation => "xxx", 
+                   :email => "townsend@patriot.net", 
+                   :timezone => "Indiana (East)")
+  sq = current_game.squadrons_by_side(side)[0]
+  sq.squadrons_ships << SquadronsShip.new(:name => ship, :user_id => u.id)
+end
+
+Given /^the current turn is (\d+)$/ do |turn|
+  current_game.update_attribute(:turn, turn)
+end
+
+Given /^"([^\"]+)" entered orders "([^\"]+)" for "([^\"]+)" on turn (\d+)$/ do |user, orders, ship, turn|
+  user = User.where(:username => user).first
+  throw "NoSuchUser#{user}" if user.nil?
+
+  current_game.squadrons.each do |sq|
+    sq.squadrons_ships.each do |ss|
+      if ss.name == ship
+        o = Order.new(:squadrons_ship_id => ss.id, :order_text => orders, :user_id => user.id, :turn => turn)
+        o.save
+      end
+    end
+  end
 end

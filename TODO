@@ -1,7 +1,70 @@
 -*- Mode: org -*-
 
-* Logins
- dave2/black123
+* Logins for Dev
+
+|         id | username | password |
+|------------+----------+----------|
+| 1027431154 | dave2    | black123 |
+|  978901298 | lori     | ?        | 
+
+* Test data in Dev db
+** games
+|         id | name               |
+|------------+--------------------|
+|  167733923 | Cape Vinny         |
+|  396099330 | Take That, Hamlet! |
+|  547147669 | The Big One        |
+|  670108558 | G 1st of J         |
+|  966106673 | The Nile II        |
+| 1056463418 | The Nile I         |
+| 1056463439 | afdsafda           |
+
+** orders
+
+** squadrons
+| id |    game_id | side                    |
+|----+------------+-------------------------|
+|  9 |  167733923 | Britain                 |
+| 10 |  167733923 | Spain                   |
+| 11 |  396099330 | Britain                 |
+| 12 |  396099330 | Denmark                 |
+|  7 |  547147669 | Britain                 |
+|  8 |  547147669 | Franco-Spanish Alliance |
+|  5 |  670108558 | Britain                 |
+|  6 |  670108558 | France                  |
+|  3 |  966106673 | Britain                 |
+|  4 |  966106673 | France                  |
+|  1 | 1056463418 | Britain                 |
+|  2 | 1056463418 | France                  | 
+
+** squadrons_ships  
+| id | squadron_id | name               |    user_id |
+|----+-------------+--------------------+------------|
+| 20 |           1 | Zealous            |            |
+| 19 |           1 | Goliath            | 1027431154 |
+| 22 |           2 | Guerrier           |            |
+| 24 |           2 | Orient             |            |
+| 18 |           3 | Goliath            | 1027431154 |
+| 21 |           3 | Zealous            |            |
+| 23 |           4 | Guerrier           |            |
+| 25 |           4 | Orient             |            |
+| 15 |           5 | Ruby               |            |
+| 14 |           5 | Minotaur           |            |
+| 17 |           6 | Eole               |            |
+| 16 |           6 | Montagnard         |            |
+| 10 |           7 | Victory            |            |
+| 11 |           7 | Royal Sovereign    |            |
+| 13 |           8 | Bucentare          | 1027431154 |
+| 12 |           8 | Santisima Trinidad |            |
+|  2 |           9 | Orion              |            |
+|  1 |           9 | Captain            | 1027431154 |
+|  5 |          10 | San YSidro         |            |
+|  4 |          10 | San Jose           |            |
+|  3 |          10 | Santisima Trinidad |            |
+|  6 |          11 | Edgar              | 1027431154 |
+|  7 |          11 | Elephant           |            |
+|  9 |          12 | Nyborg             |            |
+|  8 |          12 | Wagrien            |            |
 
 * General
 ** "rails generate model" makes test fixtures which I'm not using -- how to disable?
@@ -23,6 +86,7 @@
 
 2010-11-27
 - added initial population of games_sides based on new scenarios_sides
+
 2010-11-26 
 - create GitHub repository
 - scenarios are real model instead of just string

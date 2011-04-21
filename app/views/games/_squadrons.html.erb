@@ -1,15 +1,40 @@
 <% squadrons.each do |sq| %>
   <tr class="squadronName"><td colspan="2"><%= sq.name %></td></tr>
   <% sq.squadrons_ships.each do |ss| %>
+
+    <% cur_orders = ss.find_turn_orders(ss.squadron.game.turn) %>
+
+<tr><td>DEBUG: <%= ss.orders.inspect %></td></tr>
+
     <tr>
       <td>
         <%= ss.name %>
       </td>
       <td>
-        <% if @current_user.id == ss.user_id %>
-          Enter Orders
-        <% else %>
-          Put orders here
+        <% if ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
+
+          <% if cur_orders.nil? %>
+
+            <a href="#">Enter Orders</a>
+          
+          <% else %>
+
+             <%= cur_orders.order_text %> <a href="#">[Edit]</a>
+
+          <% end %>
+
+        <% else %><%# this isn't your ship %>
+
+          <% if cur_orders.nil? %>
+
+            No Orders
+
+          <% else %>
+
+            Orders Entered
+
+          <% end %>
+
         <% end %>
       </td>
     </tr>
