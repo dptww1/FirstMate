@@ -19,8 +19,16 @@ class Game < ActiveRecord::Base
 
   scope :active, where("")
 
-  def self.active?
-    where("deadline_type_id = 2 AND deadline >= ?", @deadline)
+  def participant?(user_id)    # TODO: CinC, Admiral
+    status = false
+
+    squadrons.each do |sq|
+      sq.squadrons_ships.each do |ss|
+        status = true if ss.user_id = user_id
+      end
+    end
+
+    status
   end
 
   def user_is_role(user, role_id)

@@ -1,31 +1,27 @@
 <% squadrons.each do |sq| %>
-  <tr class="squadronName"><td colspan="2"><%= sq.name %></td></tr>
+  <tr class="squadronName"><td colspan="3"><%= sq.name %></td></tr>
   <% sq.squadrons_ships.each do |ss| %>
 
-    <% cur_orders = ss.find_turn_orders(ss.squadron.game.turn) %>
-
-<tr><td>DEBUG: <%= ss.orders.inspect %></td></tr>
+    <% @cur_orders = ss.find_turn_orders(ss.squadron.game.turn) %>
 
     <tr>
-      <td>
-        <%= ss.name %>
-      </td>
+      <td><%= ss.name %></td>
       <td>
         <% if ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
 
-          <% if cur_orders.nil? %>
+          <% if @cur_orders.nil? %>
 
-            <a href="#">Enter Orders</a>
+            <%= link_to "Enter Orders", edit_order_path, :turn => ss.squadron.game.turn %>
           
           <% else %>
 
-             <%= cur_orders.order_text %> <a href="#">[Edit]</a>
+            <%= link_to @cur_orders.order_text, orders_path(nil, :ss_id => ss.id, :turn => ss.squadron.game.turn) %>
 
           <% end %>
 
         <% else %><%# this isn't your ship %>
 
-          <% if cur_orders.nil? %>
+          <% if @cur_orders.nil? %>
 
             No Orders
 
@@ -36,6 +32,9 @@
           <% end %>
 
         <% end %>
+      </td>
+      <td>
+        <%= link_to "Review Orders", orders_path(ss, :id => ss.id) %>
       </td>
     </tr>
   <% end %>

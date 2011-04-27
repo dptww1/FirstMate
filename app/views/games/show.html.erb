@@ -1,27 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-  <b>Name:</b>
-  <%= @game.name %>
-  <br>
-
-  <b>Turn:</b>
-  <%= @game.turn %>
-  <br>
-
-  <b>Deadline:</b>
-  <%= @game.deadline %>
-  <br>
-
-  <b>Deadline type:</b>
-  <%= @game.deadline_type.name %>
-</div>
+<%= render "shared/game_header" %>
 
 <table>
-  <tr class="sideName"><td colspan="2"><%= @game.side1 %></td></tr>
+  <tr class="sideName"><td colspan="3"><%= @game.side1 %></td></tr>
   <%= render :partial => "squadrons", :locals => { :squadrons => @game.squadrons_by_side(@game.side1) } %>
 
-  <tr class="sideName"><td colspan="2"><%= @game.side2 %></td></tr><br>
+  <tr class="sideName"><td colspan="3"><%= @game.side2 %></td></tr><br>
   <%= render :partial => "squadrons", :locals => { :squadrons => @game.squadrons_by_side(@game.side2) } %>
 </table>
 

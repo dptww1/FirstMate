@@ -1,0 +1,17 @@
+<% @game = @squadrons_ship.squadron.game %>
+
+<%= render "shared/game_header" %>
+
+<%= @squadrons_ship.name %>
+
+<table>
+<tr>
+  <td>Turn</td>
+  <td>Orders</td>
+</tr>
+<% @orders.each do |o| %>
+  <tr>
+    <td><%= o.turn %></td><td><%= o %></td>
+  </tr>
+<% end %>
+

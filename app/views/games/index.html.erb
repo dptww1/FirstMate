@@ -1,42 +1,27 @@
-<h1>Listing games</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Scenario</th>
-    <th>Turn</th>
-    <th>Next Step</th>
-    <th>Deadline</th>
-    <th>Side 1 Status</th>
-    <th>Side 2 Status</th>
-  </tr>
-
-<% @games.each_with_index do |game, rnum| %>
-  <tr class="<%= rnum % 2 == 0 ? 'odd' : 'even' %>">
-    <td><%= link_to game.name, game_path(game) %></td>
-    <td><%= game.scenario.name %></td>
-    <td align="right"><%= game.turn %></td>
-    <td><%= game.deadline_type.name %></td>
-    <td><%= game.deadline.to_s(:dpt_std) %></td>
-    <td>
-      <%= game.side1 %>
-      0
-      /
-    </td>
-    <td>
-      <%= game.side2 %>
-      0
-      /
-    </td>
-    <% if game.user_is_role(@current_user, Role::GAME_ADMIN) %>
-      <td><%= link_to 'Delete', game, :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %></td>
-    <% end %>
-  </tr>
+<% if @current_user.nil? %>
+  <% @my_games, @other_games = [], @games %>
+<% else %>
+  <% @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) } %>
 <% end %>
-</table>
 
-<br />
+<% if @my_games.size > 0 %>
 
+  <h1>My Games</h1>
+
+  <%= render :partial => "list", :locals => { :games => @my_games } %>
+<% end %>
+
+<p>
 <% if user_signed_in? %>
   <%= link_to 'New Game', new_game_path %>
 <% end %>
+</p>
+
+<% if @my_games.size > 0 %>
+  <h1>Other Games</h1>
+<% else %>
+  <h1>Games</h1>
+<% end %>
+
+<%= render :partial => "list", :locals => { :games => @other_games } %>
+
