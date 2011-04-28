@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421135912) do
+ActiveRecord::Schema.define(:version => 20110428154808) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20110421135912) do
     t.integer  "deadline_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "scenario_id"
     t.string   "side1"
     t.string   "side2"
   end
@@ -41,23 +40,6 @@ ActiveRecord::Schema.define(:version => 20110421135912) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "scenarios", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "scenarios_sides", :id => false, :force => true do |t|
-    t.integer "scenario_id"
-    t.integer "side_id"
-  end
-
-  create_table "scenarios_sides_ships", :id => false, :force => true do |t|
-    t.integer "scenario_id"
-    t.integer "side_id"
-    t.integer "ship_id"
   end
 
   create_table "ships", :force => true do |t|

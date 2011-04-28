@@ -3,16 +3,14 @@ class Game < ActiveRecord::Base
   has_many :users_games_roles
   has_many :users, :through => :users_games_roles
   has_many :squadrons
-  belongs_to :scenario
-
+ 
   validates :name,             :presence => true, :uniqueness => true
   validates :turn,             :presence => true, :numericality => true
   validates :deadline,         :presence => true
   validates :deadline_type_id, :presence => true
-  validates :scenario_id,      :presence => true
 
-  attr_accessible :name, :turn, :deadline, :deadline_type, :scenario
-  attr_accessible :deadline_type_id, :scenario_id
+  attr_accessible :name, :turn, :deadline, :deadline_type
+  attr_accessible :deadline_type_id
   attr_accessible :users_games_roles
   attr_accessible :side1, :side2
   attr_accessible :squadrons
@@ -24,7 +22,7 @@ class Game < ActiveRecord::Base
 
     squadrons.each do |sq|
       sq.squadrons_ships.each do |ss|
-        status = true if ss.user_id = user_id
+        status = true if ss.user_id == user_id
       end
     end
 

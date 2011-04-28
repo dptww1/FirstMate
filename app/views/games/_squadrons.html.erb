@@ -7,7 +7,7 @@
     <tr>
       <td><%= ss.name %></td>
       <td>
-        <% if ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
+        <% if user_signed_in? && ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
 
           <% if @cur_orders.nil? %>
 

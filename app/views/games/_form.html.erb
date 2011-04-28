@@ -22,16 +22,6 @@
   </div>
 
   <div class="field">
-    <% if edit_mode == :create %>
-      <%= f.label :scenario, "Scenario" %><br />
-      <%= collection_select(:game, :scenario_id, Scenario.all, :id, :name) %>
-    <% else %>
-      Scenario<br />
-      <%= @game.scenario.name %>
-    <% end %>
-    </div>
-
-  <div class="field">
     <%= f.label :turn %><br />
     <%= f.text_field :turn, :value => @game.turn || 1, :size => 3 %>
   </div>

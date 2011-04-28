@@ -1,3 +1,16 @@
+def find_or_create(username)
+  u = User.where(:username => username).first
+
+  unless u
+    u = User.create!(:username => username, 
+                     :password => "xxx",
+                     :password_confirmation => "xxx",
+                     :email => "xxx@example.com") # timezone?
+  end
+
+  u
+end
+
 Given /^I am not signed in$/ do
   visit("/users/sign_out")
 end
