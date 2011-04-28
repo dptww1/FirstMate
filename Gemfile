@@ -40,4 +40,5 @@ group :test do
   gem 'rspec-rails'
   gem 'spork'
   gem 'launchy'
+  gem 'viewcumber'
 end

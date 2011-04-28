@@ -122,6 +122,9 @@ GEM
     treetop (1.4.5)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    viewcumber (0.1.1)
+      capybara (>= 0.3)
+      cucumber (>= 0.8.5, < 0.10.0)
     warden (0.10.7)
       rack (>= 1.0.0)
     xpath (0.1.2)
@@ -142,3 +145,4 @@ DEPENDENCIES
   rails (= 3.0.0)
   rspec-rails
   spork
+  viewcumber
