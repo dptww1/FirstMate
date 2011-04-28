@@ -1,27 +1,26 @@
-<% if @current_user.nil? %>
-  <% @my_games, @other_games = [], @games %>
-<% else %>
-  <% @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) } %>
-<% end %>
+<% if user_signed_in? %>
 
-<% if @my_games.size > 0 %>
+  <% @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) } %>
 
   <h1>My Games</h1>
 
-  <%= render :partial => "list", :locals => { :games => @my_games } %>
-<% end %>
+  <% if @my_games.size > 0 %>
+    <%= render :partial => "list", :locals => { :games => @my_games } %>
+  <% else %>
+    <p>None!</p>
+  <% end %>
 
-<p>
-<% if user_signed_in? %>
-  <%= link_to 'New Game', new_game_path %>
-<% end %>
-</p>
+  <p><%= link_to 'New Game', new_game_path %></p>
 
-<% if @my_games.size > 0 %>
   <h1>Other Games</h1>
-<% else %>
-  <h1>Games</h1>
-<% end %>
 
-<%= render :partial => "list", :locals => { :games => @other_games } %>
+  <%= render :partial => "list", :locals => { :games => @other_games } %>
+
+<% else %>
+
+  <h1>Games</h1>
+
+  <%= render :partial => "list", :locals => { :games => @games } %>
+
+<% end %>
 

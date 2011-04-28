@@ -14,6 +14,9 @@ end
 # end
 
 Given /^I have a game titled "([^\"]*)" created by "([^\"]*)"$/ do |title, username|
+  u = User.where(:username => username).first
+  throw "NoSuchUser '#{username}'" if u.nil?
+
   g = Game.new(:name => title,
                :scenario => Scenario.first,
                :turn => 1,
@@ -22,9 +25,13 @@ Given /^I have a game titled "([^\"]*)" created by "([^\"]*)"$/ do |title, usern
                :side1 => "Side1",
                :side2 => "Side2"
                )
+
   [g.side1, g.side2].each do |side_name|
     g.squadrons << Squadron.new(:seq_num => 0, :name => "Fleet", :side => side_name)
   end
+
+  g.users_games_roles << UsersGamesRole.new(:user_id => u.id, :role_id => Role::GAME_ADMIN)
+
   g.save
 end
 

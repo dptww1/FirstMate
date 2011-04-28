@@ -1,6 +1,6 @@
 Feature: Manage Games
   In order to manage games
-  As a user
+  As a site visitor
   I want to create and manage games
 
   Background:
@@ -22,18 +22,17 @@ Feature: Manage Games
      And I should see "The Big One"
      And I should see "The Nile II"
 
-
-  Scenario: Cannot Create Game when Not Signed In
+  Scenario: Anonymous users cannot create games
     Given I am not signed in
     When I go to the list of games
     Then I should not see "New Game"
+     And I should not see "My Games"
 
-
-  Scenario: Can Create Game when Signed In
+  Scenario: Signed-in users can create games
     Given I am signed in as "dave" with password "davepw"
     When I go to the list of games
     Then I should see "New Game"
-
+     And I should see "My Games"
 
   Scenario: Create Valid Game
     Given I am signed in as "dave" with password "davepw"
@@ -48,14 +47,11 @@ Feature: Manage Games
     Then I should see "Game was successfully created."
      And I should see a row with "Test New Game" and then "Delete"
 
-  Scenario: See Squadrons
-    Given I am signed in as "paul" with password "paulpw"
-      And I create the following game:
-      |name|scenario|
-      |Paul Test|Trafalgar|
-      And I am on the list of games
-     
-    When I follow "Paul Test"
-
-#    Then I should see "Fleet"
-
+  Scenario: Game creators can delete their own games, but not others
+    Given I am signed in as "dave" with password "davepw"
+      And I have a game titled "Deletable" created by "dave"
+      And I have a game titled "Immune" created by "paul"
+    When I go to the list of games
+    Then I should see a row with "Deletable" and then "Delete"
+     And I should not see a row with "Immune" and then "Delete"
+      
