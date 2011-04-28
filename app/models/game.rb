@@ -32,7 +32,7 @@ class Game < ActiveRecord::Base
   end
 
   def user_is_role(user, role_id)
-    users_games_roles.detect { |ugr| ugr.user_id = user.id && ugr.role_id = role_id } if user
+    users_games_roles.detect { |ugr| ugr.user_id == user.id && ugr.role_id == role_id } if user
   end
 
   def squadrons_by_side(side)
