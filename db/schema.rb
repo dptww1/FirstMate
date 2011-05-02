@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428154808) do
+ActiveRecord::Schema.define(:version => 20110428201046) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110428154808) do
     t.datetime "updated_at"
     t.string   "side1"
     t.string   "side2"
+    t.integer  "created_by"
   end
 
   create_table "orders", :force => true do |t|

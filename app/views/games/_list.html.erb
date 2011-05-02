@@ -26,7 +26,7 @@
       /
     </td>
     <td>
-      <% if game.user_is_role(@current_user, Role::GAME_ADMIN) %>
+      <% if user_signed_in? && game.created_by == @current_user.id %>
         <%= link_to 'Delete', game, :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %>
       <% end %>
     </td>

@@ -42,6 +42,8 @@ Feature: Manage Games
      And I fill in "Turn" with "1"
      And I set the "game_deadline" timestamp to "2011-01-23 10:30"
      And I select "Move Orders" from "game_deadline_type_id"
+     And I fill in "Side1" with "Side One"
+     And I fill in "Side2" with "Side Two"
      And I press "Create Game"
     Then I should see "Game was successfully created."
      And I should see a row with "Test New Game" and then "Delete"

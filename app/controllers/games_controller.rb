@@ -43,10 +43,7 @@ class GamesController < ApplicationController
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
-    if user_signed_in?
-      @game.users_games_roles << UsersGamesRole.new(:user_id => current_user.id,
-                                                    :role_id => Role::GAME_ADMIN)
-    end
+    @game.created_by = current_user.id
 
     respond_to do |format|
       if @game.save

@@ -20,19 +20,15 @@ Given /^I have a game titled "([^\"]*)" created by "([^\"]*)"$/ do |title, usern
                :deadline => Time.gm(2010, 'Dec', 20, 14, 30),
                :deadline_type => DeadlineType.find(0),
                :side1 => "Side1",
-               :side2 => "Side2"
+               :side2 => "Side2",
+               :created_by => u.id
                )
-
-  [g.side1, g.side2].each do |side_name|
-    g.squadrons << Squadron.new(:seq_num => 0, :name => "Fleet", :side => side_name)
-  end
-
-  g.users_games_roles << UsersGamesRole.new(:user_id => u.id, :role_id => Role::GAME_ADMIN)
-
   g.save
 end
 
 Given /^I create the following games?:$/ do |table|
+  u = find_or_create("testuser")
+
   table.hashes.each_with_index do |h, i|
     Game.create!(
                  :name => h['name'] || "Game #{i}",
@@ -40,7 +36,8 @@ Given /^I create the following games?:$/ do |table|
                  :deadline => Time.gm(2010, 'Dec', 20, 14, 30),
                  :deadline_type => DeadlineType.find(0),
                  :side1 => "Side1",
-                 :side2 => "Side2"
+                 :side2 => "Side2",
+                 :created_by => u.id
                  )
   end
 end

@@ -10,7 +10,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :timezone
 
-  has_many :users_games_roles
-  has_many :games, :through => :users_games_roles
   has_many :squadrons_ships
 end
