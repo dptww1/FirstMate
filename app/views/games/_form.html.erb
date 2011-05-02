@@ -3,50 +3,19 @@
 <% @date_opts_hash[:start_year       ] = Time.now.year %>
 <% @date_opts_hash[:end_year         ] = Time.now.year + 1 %>
 
-<%= form_for(@game) do |f| %>
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+<% semantic_form_for(@game) do |f| %>
+  <%= f.semantic_errors :state %>
 
-      <ul>
-      <% @game.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% f.inputs do %>
+    <%= f.input :name, :as => :string, :input_html => { :size => 40, :maxlength => 40, :readonly => edit_mode == :edit } %>
+    <%= f.input :turn,                 :input_html => { :size =>  3, :maxlength =>  3 } %>
+    <%= f.input :deadline %>
+    <%= f.input :deadline_type %>
+    <%= f.input :side1,                :input_html => { :size => 20, :maxlength => 20, :readonly => edit_mode == :edit } %>
+    <%= f.input :side2,                :input_html => { :size => 20, :maxlength => 20, :readonly => edit_mode == :edit } %>
+
+    <% f.buttons do %>
+      <%= f.commit_button %>
+    <% end %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :turn %><br />
-    <%= f.text_field :turn, :value => @game.turn || 1, :size => 3 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :deadline %><br />
-    <%= f.datetime_select :deadline, @date_opts_hash %> UTC
-  </div>
-
-  <div class="field">
-    <%= f.label :deadline_type %><br />
-    <%= collection_select(:game, :deadline_type_id, DeadlineType.all, :id, :name) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :side1 %><br />
-    <%= f.text_field :side1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :side2 %><br />
-    <%= f.text_field :side2 %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

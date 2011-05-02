@@ -10,6 +10,7 @@ gem 'rails', '3.0.0'
 gem 'pg'
 gem 'devise'
 gem 'db_populate'
+gem 'formtastic'
 
 # Use unicorn as the web server
 # gem 'unicorn'
