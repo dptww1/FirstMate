@@ -12,6 +12,10 @@ table {
   background-color: white;
 }
 
+tr.curUserSsRow {
+  background-color: #fff9d8;
+}
+
 tr.even {
 }
 
@@ -26,8 +30,9 @@ tr.sideName {
 }
 
 tr.squadronName {
-  font-style: italic;
-  font-weight: bold;
+  background-color: #eee;
+  font-style:       italic;
+  font-weight:      bold;
 }
 
 th {

@@ -1,3 +1,5 @@
+<%= page_title("Game List") %>
+
 <% if user_signed_in? %>
 
   <% @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) } %>

@@ -1,21 +1,22 @@
 <% squadrons.each do |sq| %>
   <tr class="squadronName"><td colspan="3"><%= sq.name %></td></tr>
-  <% sq.squadrons_ships.each do |ss| %>
+  <% sq.squadrons_ships.each_with_index do |ss, i| %>
 
     <% @cur_orders = ss.find_turn_orders(ss.squadron.game.turn) %>
+    <% @my_ss = user_signed_in? && ss.user_id == @current_user.id %>
 
-    <tr>
+    <tr class="<%= @my_ss ? 'curUserSsRow' : i % 2 == 0 ? 'odd' : 'even' %>">
       <td><%= ss.name %></td>
       <td>
         <% if user_signed_in? && ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
 
           <% if @cur_orders.nil? %>
 
-            <%= link_to "Enter Orders", edit_order_path, :turn => ss.squadron.game.turn %>
+            <%= link_to "Enter Orders", orders_path, :turn => ss.squadron.game.turn %>
           
           <% else %>
 
-            <%= link_to @cur_orders.order_text, orders_path(nil, :ss_id => ss.id, :turn => ss.squadron.game.turn) %>
+            <%= link_to @cur_orders.order_text, edit_order_path(@cur_orders, :ss_id => ss.id, :turn => ss.squadron.game.turn) %>
 
           <% end %>
 
@@ -34,7 +35,7 @@
         <% end %>
       </td>
       <td>
-        <%= link_to "Review Orders", orders_path(ss, :id => ss.id) %>
+        <%= link_to "Review Orders", orders_path(ss, :ss_id => ss.id) %>
       </td>
     </tr>
   <% end %>

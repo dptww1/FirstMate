@@ -15,10 +15,11 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @ss = @order.squadrons_ship
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to(edit_order_path(@order), :notice => "orders updated")}
+        format.html { redirect_to(game_path(@ss.squadron.game), :notice => "#{@ss.name} orders updated")}
       end
     end
   end

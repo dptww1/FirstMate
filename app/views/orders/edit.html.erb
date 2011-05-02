@@ -1,17 +1,21 @@
+<%= page_title("Edit Orders") %>
+
 <% @turn = params[:turn].to_i %>
 <% @game = @order.squadrons_ship.squadron.game %>
 
-Game: <%= @game.name %><br>
-Ship: <%= @order.squadrons_ship.name %><br>
+<%= render "shared/game_header" %>
+
+<p>Ship: <%= @order.squadrons_ship.name %><p>
 
 <table>
 <tr>
-  <td>Turn</td>
-  <td>Orders</td>
+  <th>Turn</th>
+  <th>Orders</th>
 </tr>
-<% @turn.to_i.downto(1).each do |t| %>
-  <tr>
-    <td>Turn <%= t %></td>
+
+<% @game.turn.downto(1).each do |t| %>
+  <tr class="<%= t % 2 == 0 ? 'even' : 'odd' %>">
+    <td><%= t %></td>
     <td>
       <% if @turn == t %>
         <%= form_for @order do |f| %>
@@ -25,6 +29,7 @@ Ship: <%= @order.squadrons_ship.name %><br>
     </td>
   </tr>
 <% end %>
+
 </table>
 
-<%= link_to "Back to Game", game_path(@game) %>
+<p><%= link_to "Back to Game", game_path(@game) %></p>

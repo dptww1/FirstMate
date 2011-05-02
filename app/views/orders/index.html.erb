@@ -1,17 +1,24 @@
+<%= page_title("Show Orders") %>
+
 <% @game = @squadrons_ship.squadron.game %>
 
 <%= render "shared/game_header" %>
 
-<%= @squadrons_ship.name %>
+<p><%= @squadrons_ship.name %></p>
 
 <table>
 <tr>
-  <td>Turn</td>
-  <td>Orders</td>
+  <th>Turn</th>
+  <th>Orders</th>
 </tr>
-<% @orders.each do |o| %>
-  <tr>
-    <td><%= o.turn %></td><td><%= o %></td>
+
+<% @game.turn.downto(1).each do |t| %>
+  <tr class="<%= t % 2 == 0 ? 'even' : 'odd' %>">
+    <td><%= t %></td>
+    <td><%= @squadrons_ship.find_turn_orders(t) %></td>
   </tr>
 <% end %>
 
+</table>
+
+<p><%= link_to "Back to Game", game_path(@game) %></p>
