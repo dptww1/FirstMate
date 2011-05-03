@@ -11,6 +11,7 @@ gem 'pg'
 gem 'devise'
 gem 'db_populate'
 gem 'formtastic'
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
