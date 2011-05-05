@@ -34,25 +34,33 @@ Feature: Manage Games
     Then I should see "New Game"
      And I should see "My Games"
 
-  Scenario: Create Valid Game
+  Scenario: A new valid game should show up in the list of games
     Given I am signed in as "dave" with password "davepw"
       And I am on the list of games
     When I follow "New Game"
      And I fill in "Name" with "Test New Game"
      And I fill in "Turn" with "1"
-     And I set the "game_deadline" timestamp to "2011-01-23 10:30"
+     And I fill in "Deadline" with "2011-01-23 10:30:00"
      And I select "Move Orders" from "game_deadline_type_id"
      And I fill in "Side1" with "Side One"
      And I fill in "Side2" with "Side Two"
      And I press "Create Game"
-    Then I should see "Game was successfully created."
+    Then I should see "Game 'Test New Game' created."
      And I should see a row with "Test New Game" and then "Delete"
 
-  Scenario: Game creators can delete their own games, but not others
+  Scenario: Game creators have the option to delete their own games, but not others
     Given I am signed in as "dave" with password "davepw"
       And I have a game titled "Deletable" created by "dave"
       And I have a game titled "Immune" created by "paul"
     When I go to the list of games
     Then I should see a row with "Deletable" and then "Delete"
      And I should not see a row with "Immune" and then "Delete"
+
+  Scenario: Game creators should actually be able to delete their games
+    Given I am signed in as "dave" with password "davepw"
+      And I have a game titled "DELETE ME" created by "dave"
+    When I go to the list of games
+     And I follow "Delete"
+    Then I should see "Game 'DELETE ME' deleted"
+     And I should see "My Games"
       

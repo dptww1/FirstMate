@@ -4,8 +4,8 @@
   <th>Turn</th>
   <th>Next Step</th>
   <th>Deadline</th>
-  <th>Side 1 Status</th>
-  <th>Side 2 Status</th>
+  <th colspan="3">Side 1 Orders Status</th>
+  <th colspan="3">Side 2 Orders Status</th>
   <th>Actions</th>
 </tr>
 
@@ -15,20 +15,19 @@
     <td align="right"><%= game.turn %></td>
     <td><%= game.deadline_type.name %></td>
     <td><%= game.deadline.to_s(:dpt_std) %></td>
-    <td>
-      <%= game.side1 %>
-      0
-      /
-    </td>
-    <td>
-      <%= game.side2 %>
-      0
-      /
-    </td>
+
+    <td><%= game.side1 %></td>
+    <td><%= cnts[game.id][:s1_cur_orders_cnt] %></td>
+    <td><%= cnts[game.id][:s1_num_ships_cnt] %></td>
+
+    <td><%= game.side2 %></td>
+    <td><%= cnts[game.id][:s2_cur_orders_cnt] %></td>
+    <td><%= cnts[game.id][:s2_num_ships_cnt] %></td>
+
     <td>
       <% if user_signed_in? && game.created_by == @current_user.id %>
         <%= link_to 'Update', edit_game_path(game) %>
-        <%= link_to 'Delete', game, :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %>
+        <%= link_to 'Delete', game_path(game), :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete %>
       <% end %>
     </td>
   </tr>

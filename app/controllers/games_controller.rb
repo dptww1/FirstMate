@@ -79,7 +79,7 @@ class GamesController < ApplicationController
     @game.destroy
 
     respond_to do |format|
-      format.html { redirect_to(games_url) }
+      format.html { redirect_to(games_url, :notice => "Game '#{@game.name}' deleted.") }
       format.xml  { head :ok }
     end
   end

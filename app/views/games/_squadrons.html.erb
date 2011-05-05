@@ -12,7 +12,7 @@
 
           <% if @cur_orders.nil? %>
 
-            <%= link_to "Enter Orders", orders_path, :turn => ss.squadron.game.turn %>
+            <%= link_to "Enter Orders", new_order_path(:ss_id => ss.id, :turn => ss.squadron.game.turn) %>
           
           <% else %>
 

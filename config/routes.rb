@@ -2,7 +2,7 @@ FirstMate::Application.routes.draw do |map|
   devise_for :users
 
   resources :games
-  resources :orders, :only => [:index, :edit, :create, :update]
+  resources :orders
 
   root :to => "games#index"
 

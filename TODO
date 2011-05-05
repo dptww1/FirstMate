@@ -7,6 +7,8 @@
 | 1027431154 | dave2    | black123 |
 |  978901298 | lori     | ?        | 
 
+For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuceno/123)
+
 * Test data in Dev db
 ** games
 |         id | name               |
@@ -66,39 +68,24 @@
 |  9 |          12 | Nyborg             |            |
 |  8 |          12 | Wagrien            |            |
 
-* General
+* General/System
 ** "rails generate model" makes test fixtures which I'm not using -- how to disable?
-** need Flash or not? devise seems to need it, rest of site doesn't
 ** database.yml shouldn't be checked in (DUH)
 ** Pickle 
 ** Metric fu http://railscasts.com/episodes/166-metric-fu
+** XML handling
 
-* Devise
-** Verify Devise signon/signin/signout
+* Devise signon/signin/signout flash messages not working
 
 * Games 
-** index
-*** when signed on should filter games
-*** Client-side table sorting
-*** deleting a game should show something in Flash
+*** views
+**** index
+***** Client-side table sorting
+**** edit
+***** deadline formatting is inconsistent between initial value and entered value
+***** Any Time CSS formatting to improve looks http://www.ama3.com/anytime/
 
-* History
+* Orders
+*** controller 
+**** needs before_filter, authenticate user in general
 
-2010-11-27
-- added initial population of games_sides based on new scenarios_sides
-
-2010-11-26 
-- create GitHub repository
-- scenarios are real model instead of just string
-- scenario not editable
-- after creating game, go to list, not show
-
-2010-11-24 
-- Game/User validations
-- added scenario name to game editing
-
-2010-11-23 
-- Cucumber build out
-- can create game
-- timestamp <select>s working
-- timezones

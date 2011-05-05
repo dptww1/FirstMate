@@ -1,5 +1,7 @@
 <%= page_title("Game List") %>
 
+<% @cnts = Game.find_progress_counts %>
+
 <% if user_signed_in? %>
 
   <% @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) } %>
@@ -7,7 +9,7 @@
   <h1>My Games</h1>
 
   <% if @my_games.size > 0 %>
-    <%= render :partial => "list", :locals => { :games => @my_games } %>
+    <%= render :partial => "list", :locals => { :games => @my_games, :cnts => @cnts } %>
   <% else %>
     <p>None!</p>
   <% end %>
@@ -16,13 +18,13 @@
 
   <h1>Other Games</h1>
 
-  <%= render :partial => "list", :locals => { :games => @other_games } %>
+  <%= render :partial => "list", :locals => { :games => @other_games, :cnts => @cnts } %>
 
 <% else %>
 
   <h1>Games</h1>
 
-  <%= render :partial => "list", :locals => { :games => @games } %>
+  <%= render :partial => "list", :locals => { :games => @games, :cnts => @cnts } %>
 
 <% end %>
 
