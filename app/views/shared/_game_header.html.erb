@@ -3,5 +3,9 @@
 <tr><th>Game</th> <td><%= @game.name %></td></tr>
 
 <tr><th>Turn</th> <td><%= @game.turn %></td></tr>
+
+<tr><th>Deadline Type</th> <td><%= @game.deadline_type.name %></td></tr>
+
+<tr><th>Deadline</th> <td><%= l @game.deadline %></td></tr>
   
 </table>

@@ -74,13 +74,24 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 ** Metric fu http://railscasts.com/episodes/166-metric-fu
 ** XML handling in controllers
 
+* Features TO DO
+** Generic phases per turn; info available public/private per turn/game; (deadline type is just a phase name)
+** Struck ships don't count against completion limits
+** "Nag" links
+** CinCs
+** Squadron commanders
+** orders maybe should be nested route below squadronsships
+** squadronsships should be nested route below game
+** rewrite game.find_progress_counts to use AR
+** CRUD/squadrons
+
 * Games 
 *** views
 **** index
 ***** Client-side table sorting
 **** edit
 ***** deadline formatting is inconsistent between initial value and entered value
-***** Any Time CSS formatting to improve looks http://www.ama3.com/anytime/
+***** Any Time CSS formatting to improve looks http://www.ama3.com/anytime/ (and remove seconds)
 
 * Orders
 *** controller 
