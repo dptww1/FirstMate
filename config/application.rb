@@ -34,7 +34,7 @@ module FirstMate
     config.generators do |g|
     #   g.orm             :active_record
     #   g.template_engine :erb
-    #  g.test_framework  :rspec
+      g.test_framework  :rspec
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.

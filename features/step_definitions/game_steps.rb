@@ -50,7 +50,7 @@ Given /^"([^\"]+)" is (Captain|Admiral) of "([^\"]+)" on (Side\d)$/ do |name, ro
 end
 
 Given /^the current turn is (\d+)$/ do |turn|
-  current_game.update_attribute(:turn, turn)
+  current_game.update_attributes :turn => turn
 end
 
 Given /^"([^\"]+)" entered orders "([^\"]+)" for "([^\"]+)" on turn (\d+)$/ do |username, orders, ship, turn|
