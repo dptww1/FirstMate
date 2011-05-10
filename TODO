@@ -83,7 +83,9 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 ** orders maybe should be nested route below squadronsships
 ** squadronsships should be nested route below game
 ** rewrite game.find_progress_counts to use AR
-** CRUD/squadrons
+** CRUD/squadrons (some features written)
+** HAML/SASS?
+** default text for new orders (e.g. "SS:FS  S1:- S2:- S3:- S4:- M:- NOTES:")
 
 * Games 
 *** views
@@ -91,9 +93,16 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 ***** Client-side table sorting
 **** edit
 ***** deadline formatting is inconsistent between initial value and entered value
-***** Any Time CSS formatting to improve looks http://www.ama3.com/anytime/ (and remove seconds)
+***** Any Time CSS formatting to improve looks http://www.ama3.com/anytime/
+**** show
+***** "Review Orders" urls are hinky
+*** model
+**** deleting game doesn't delete its squadrons (probably needs to continue on down the tree)
 
 * Orders
 *** controller 
 **** needs before_filter, authenticate user in general
 
+*** view
+**** index
+***** should obscure current turn's orders if no permissions (wrong side, not commander)

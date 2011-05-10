@@ -83,11 +83,14 @@ module Formtastic
   module DatePicker
     def datepicker_input(method, options = {})
       format = options[:format] || Date::DATE_FORMATS[:default] || '%d %b %Y'
+      Rails.logger.debug "Formtastic::DatePicker::format=#{format}"
       string_input(method, datepicker_options(format, object.send(method)).merge(options))
     end
 
     def datepicker_options(format, value = nil)
-      datepicker_options = { :value => value.try(:strftime, format), :input_html => { :class => 'ui-datepicker', :size => 40 } }
+      datepicker_options = { :value => value.try(:strftime, format), :input_html => { :class => 'ui-datepicker', :size => 20 } }
+      Rails.logger.debug "Formtastic::DatePicker::datepicker_options[:value]=#{datepicker_options[:value]}"
+      datepicker_options
     end
   end
 end
