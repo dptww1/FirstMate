@@ -1,5 +1,10 @@
 <% squadrons.each do |sq| %>
-  <tr class="squadronName"><td colspan="3"><%= sq.name %></td></tr>
+  <tr class="squadronName">
+    <td><%= sq.name %></td>
+    <td><%= render :partial => "shared/username_with_email", :locals => { :user => sq.user } %></td>
+    <td></td>
+    <td></td>
+  </tr>
   <% sq.squadrons_ships.each_with_index do |ss, i| %>
 
     <% @cur_orders = ss.find_turn_orders(ss.squadron.game.turn) %>
@@ -7,6 +12,7 @@
 
     <tr class="<%= @my_ss ? 'curUserSsRow' : i % 2 == 0 ? 'odd' : 'even' %>">
       <td><%= ss.name %></td>
+      <td><%= render :partial => "shared/username_with_email", :locals => { :user => ss.user } %></td>
       <td>
         <% if user_signed_in? && ss.user_id == @current_user.id %><%# this is your ship; eventually should handle Admiral, CinC %>
 
@@ -35,7 +41,7 @@
         <% end %>
       </td>
       <td>
-        <%= link_to "Review Orders", orders_path(ss, :ss_id => ss.id) %>
+        <%= link_to "Review Orders", orders_path(:ss_id => ss.id) %>
       </td>
     </tr>
   <% end %>

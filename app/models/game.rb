@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
   belongs_to :deadline_type
   has_many :squadrons
+  belongs_to :side1_cinc_user, :class_name => "User", :foreign_key => "side1_cinc"
+  belongs_to :side2_cinc_user, :class_name => "User", :foreign_key => "side2_cinc"
 
   before_create :create_squadrons
  
@@ -15,7 +17,7 @@ class Game < ActiveRecord::Base
   attr_accessible :name, :turn, :deadline, :deadline_type
   attr_accessible :deadline_type_id
   attr_accessible :users_games_roles
-  attr_accessible :side1, :side2
+  attr_accessible :side1, :side2, :side1_cinc_user, :side2_cinc_user
   attr_accessible :squadrons
   attr_accessible :created_by
 

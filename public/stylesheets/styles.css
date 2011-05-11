@@ -1,6 +1,6 @@
-body {
-  font-size:   10pt;
+body, p {
   font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size:   10pt;
 }
 
 table {
@@ -30,28 +30,29 @@ tr.sideName {
 }
 
 tr.squadronName {
-  background-color: #eee;
+  background-color: #ddd;
   font-style:       italic;
   font-weight:      bold;
 }
 
 th {
+  background-color: black;
   border-width:     1px;
-  padding:          2px 1em 2px 1em;
   border-style:     dotted;
   border-color:     gray;
-  text-align:       left;
   color:            white;
-  background-color: black;
+  font-family:      'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  padding:          2px 1em 2px 1em;
+  text-align:       left;
 }
 
 td {
   border-width: 1px;
-  padding:      2px 1em 2px 1em;
   border-style: dotted;
   border-color: gray;
-  font-size:    10pt;
   font-family:  'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size:    10pt;
+  padding:      2px 1em 2px 1em;
 }
 
 div#turnList {
@@ -65,3 +66,17 @@ div#shipList {
   vertical-align: top;
 }
 
+.justifiedLine {
+  display: block;
+  width:   100%;
+}
+
+.justifiedLine > p.alignLeft {
+  float: left;
+  margin: 0;   // not quite sure why this is needed
+}
+
+.justifiedLine > p.alignRight {
+  float: right;
+  margin: 0;   // not quite sure why this is needed
+}

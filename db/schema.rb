@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428201046) do
+ActiveRecord::Schema.define(:version => 20110510165813) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20110428201046) do
     t.string   "side1"
     t.string   "side2"
     t.integer  "created_by"
+    t.integer  "side1_cinc"
+    t.integer  "side2_cinc"
   end
 
   create_table "orders", :force => true do |t|
@@ -35,12 +37,6 @@ ActiveRecord::Schema.define(:version => 20110428201046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "turn"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "ships", :force => true do |t|
@@ -57,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110428201046) do
     t.datetime "updated_at"
     t.integer  "seq_num"
     t.string   "side"
+    t.integer  "user_id"
   end
 
   create_table "squadrons_ships", :force => true do |t|
@@ -87,11 +84,5 @@ ActiveRecord::Schema.define(:version => 20110428201046) do
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
-
-  create_table "users_games_roles", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "game_id"
-    t.integer "role_id"
-  end
 
 end

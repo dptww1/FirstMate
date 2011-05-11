@@ -1,0 +1,28 @@
+= page_title("Game List")
+
+- @cnts = Game.find_progress_counts
+
+- if user_signed_in?
+
+  - @my_games, @other_games = @games.partition { |g| g.participant?(@current_user.id) }
+
+  %h1 My Games
+
+  - if @my_games.size > 0
+    = render :partial => "list", :locals => { :games => @my_games, :cnts => @cnts }
+  - else
+    %p None!
+
+  %p
+    = link_to 'New Game', new_game_path
+
+  %h1 Other Games
+
+  = render :partial => "list", :locals => { :games => @other_games, :cnts => @cnts }
+
+- else
+
+  %h1 Games
+
+  = render :partial => "list", :locals => { :games => @games, :cnts => @cnts }
+

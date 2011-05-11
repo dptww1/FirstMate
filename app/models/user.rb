@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :timezone
 
+  has_many :squadrons
   has_many :squadrons_ships
+  has_many :side1_cinc, :class_name => "Game", :foreign_key => :side1_cinc
+  has_many :side2_cinc, :class_name => "Game", :foreign_key => :side2_cinc
 end
