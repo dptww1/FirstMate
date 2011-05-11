@@ -13,6 +13,7 @@ gem 'db_populate'
 gem 'formtastic'
 gem 'jquery-rails'
 gem "haml"
+gem "sass"
 
 # Use unicorn as the web server
 # gem 'unicorn'

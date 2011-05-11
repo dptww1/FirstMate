@@ -81,7 +81,6 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 ** squadronsships should be nested route below game
 ** rewrite game.find_progress_counts to use AR
 ** CRUD/squadrons (some features written)
-** HAML/SASS?
 ** default text for new orders (e.g. "SS:FS  S1:- S2:- S3:- S4:- M:- NOTES:")
 ** activate email icon as link to send email to person/side/squadron/game
 *** must be logged in to send email, can only send to friendly ships

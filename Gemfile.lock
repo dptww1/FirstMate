@@ -118,6 +118,7 @@ GEM
     rspec-rails (2.1.0)
       rspec (~> 2.1.0)
     rubyzip (0.9.4)
+    sass (3.1.1)
     selenium-webdriver (0.1.0)
       childprocess (= 0.1.4)
       ffi (~> 0.6.3)
@@ -154,5 +155,6 @@ DEPENDENCIES
   pg
   rails (= 3.0.0)
   rspec-rails
+  sass
   spork
   viewcumber
