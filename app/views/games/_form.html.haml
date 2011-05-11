@@ -1,0 +1,21 @@
+- @users = User.order("username").inject([]) { |a,u| a << [ u.username, u.id ] }
+
+= semantic_form_for(@game) do |f|
+  = f.semantic_errors :state
+
+  = f.inputs :name => "Game Properties" do
+    = f.input :name, :as => :string, :input_html => { :size => 40, :maxlength => 40, :readonly => edit_mode == :edit }
+    = f.input :turn,                 :input_html => { :size =>  3, :maxlength =>  3 }
+    = f.input :deadline, :as => :datepicker 
+    = f.input :deadline_type
+
+  = f.inputs :name => "First Side Properties" do
+    = f.input :side1, :input_html => { :size => 20, :maxlength => 20, :readonly => edit_mode == :edit }
+    = f.input :side1_cinc, :as => :select, :collection => @users
+
+  = f.inputs :name => "Second Side Properties" do
+    = f.input :side2, :input_html => { :size => 20, :maxlength => 20, :readonly => edit_mode == :edit }
+    = f.input :side2_cinc, :as => :select, :collection => @users
+
+  = f.buttons do
+    = f.commit_button

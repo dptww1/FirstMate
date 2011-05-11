@@ -1,0 +1,33 @@
+= page_title("Enter Orders")
+
+- @turn = params[:turn].to_i
+- @game = @squadrons_ship.squadron.game
+
+= render "shared/game_header"
+
+%p
+  Ship: 
+  = @squadrons_ship.name
+
+%table
+  %tr
+    %th Turn
+    %th Orders
+
+  - @game.turn.downto(1).each do |t|
+    %tr{:class => [ t % 2 == 0 ? 'even' : 'odd'] }
+    %td
+      = t
+    %td
+      - if @turn == t
+        = form_for @order do |f|
+          = f.text_field :order_text
+          = hidden_field_tag :user_id, @current_user.id
+          = hidden_field :order, :turn, { :value => params[:turn] }
+          = hidden_field_tag :ss_id, @squadrons_ship.id
+          = f.submit "Enter Orders"
+      - else
+        = @squadrons_ship.find_turn_orders(t)
+
+%p
+  = link_to "Back to Game", game_path(@game)
