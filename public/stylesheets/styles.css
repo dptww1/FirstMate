@@ -1,0 +1,54 @@
+body, p {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 10pt; }
+
+table {
+  border-width: 0px;
+  border-spacing: 0px;
+  border-style: none;
+  border-color: gray;
+  border-collapse: collapse;
+  background-color: white; }
+
+tr.curUserSsRow {
+  background-color: #fff9d8; }
+
+tr.odd {
+  background-color: #eeeeff; }
+
+tr.sideName {
+  background-color: black;
+  color: white;
+  font-weight: bold; }
+
+tr.squadronName {
+  background-color: #dddddd;
+  font-style: italic;
+  font-weight: bold; }
+
+th {
+  background-color: black;
+  border-width: 1px;
+  border-style: dotted;
+  border-color: gray;
+  color: white;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  padding: 2px 1em 2px 1em;
+  text-align: left; }
+
+td {
+  border-width: 1px;
+  border-style: dotted;
+  border-color: gray;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 10pt;
+  padding: 2px 1em 2px 1em; }
+
+div#turnList {
+  display: inline-block;
+  vertical-align: top; }
+
+div#shipList {
+  display: inline-block;
+  padding-left: 1em;
+  vertical-align: top; }

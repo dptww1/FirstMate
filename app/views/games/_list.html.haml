@@ -36,5 +36,11 @@
       %td
         = link_to "Orders", game_path(game)
         - if user_signed_in? && game.created_by == @current_user.id
+          - if cnts[game.id][:s1_cur_orders_cnt] != cnts[game.id][:s1_num_ships_cnt] ||
+          -    cnts[game.id][:s2_cur_orders_cnt] != cnts[game.id][:s2_num_ships_cnt]
+            |
+            <a href="#">Nag</a>
+          |
           = link_to "Update", edit_game_path(game)
+          |
           = link_to "Delete", game_path(game), :confirm => "Are you sure you want to delete " + game.name + "?", :method => :delete 
