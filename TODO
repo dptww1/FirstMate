@@ -76,6 +76,7 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 
 * Features TO DO
 ** Generic phases per turn; info available public/private per turn/game; (deadline type is just a phase name)
+** normalize Side1, Side2, ...
 ** Struck ships don't count against completion limits
 ** orders maybe should be nested route below squadronsships
 ** squadronsships should be nested route below game
@@ -85,6 +86,7 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 ** activate email icon as link to send email to person/side/squadron/game
 *** must be logged in to send email, can only send to friendly ships
 ** ordering within squadrons (squadrons_ship.seq_num)
+** Game DELETE link moved from games list to game show page
 
 * Games 
 *** views
