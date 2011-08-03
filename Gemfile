@@ -2,7 +2,10 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.8.rc1'
+
+gem 'rake', '~> 0.8.7'  # 0.9.0 is latest, but is hosed per 
+# http://stackoverflow.com/questions/5287121/undefined-method-task-using-rake-0-9-0-beta-4
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
