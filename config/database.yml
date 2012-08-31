@@ -43,11 +43,11 @@ test: &test
   password:
 
 production:
-  adapter: postgresql
+  adapter: 
   encoding: unicode
-  database: FirstMate_production
+  database:
   pool: 5
-  username: FirstMate
+  username:
   password:
 
 cucumber:
