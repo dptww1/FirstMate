@@ -69,7 +69,6 @@ For any ship in Cape St Vincent: capt <shipname>/123 (e.g. capt san juan nepomuc
 |  8 |          12 | Wagrien            |            |
 
 * General/System
-** database.yml shouldn't be checked in (DUH)
 ** Pickle 
 ** Metric fu http://railscasts.com/episodes/166-metric-fu
 ** XML handling in controllers
