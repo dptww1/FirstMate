@@ -14,4 +14,3 @@ h1. Technical Notes
 
 This is a Rail 3 app.  Database information isn't included.
 
-It's only about 
