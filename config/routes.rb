@@ -1,4 +1,4 @@
-FirstMate::Application.routes.draw do |map|
+FirstMate::Application.routes.draw do
   devise_for :users
 
   resources :games
