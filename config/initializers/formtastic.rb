@@ -95,4 +95,4 @@ module Formtastic
   end
 end
 
-Formtastic::SemanticFormBuilder.send(:include, Formtastic::DatePicker)
+#Formtastic::SemanticFormBuilder.send(:include, Formtastic::DatePicker)

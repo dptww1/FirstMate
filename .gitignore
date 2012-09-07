@@ -6,3 +6,4 @@ tmp/**/*
 viewcumber
 public/stylessheets/*.css
 config/database.yml
+.sass-cache/

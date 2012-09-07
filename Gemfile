@@ -48,3 +48,9 @@ group :test do
   gem 'launchy'
   gem 'viewcumber'
 end
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end

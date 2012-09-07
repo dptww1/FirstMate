@@ -3,7 +3,7 @@
  *                        Basic Time Zone Support (source)
  *  VERSION: 4.1112
  *
- *  Copyright 2010 Andrew M. Andrews III (www.AMA3.com). Some Rights 
+ *  Copyright 2010 Andrew M. Andrews III (www.AMA3.com). Some Rights
  *  Reserved. This work licensed under the Creative Commons Attribution-
  *  Noncommercial-Share Alike 3.0 Unported License except in jurisdicitons
  *  for which the license has been ported by Creative Commons International,
@@ -23,13 +23,13 @@
  *  to tailor this file to meet their needs, mostly by removing lines that
  *  are not required by their users, and/or by removing either abbreviated
  *  (before double-dash) or long (after double-dash) names from the strings.
- *  
+ *
  *  Note that there is no automatic detection of daylight savings time
- *  (AKA summer time), due to lack of support in JavaScript and the 
+ *  (AKA summer time), due to lack of support in JavaScript and the
  *  time-prohibitive complexity of attempting such support in code.
  *  If you want to take a stab at it, let me know; if you want to pay me
  *  large sums of money to add it, again, let me know. :-p
- *  
+ *
  *  This file should be included AFTER anytime.js (or anytimec.js) in any
  *  HTML page that requires it.
  *
@@ -159,7 +159,7 @@ AnyTime.utcLabel[240]=[
   ,'AZT--Azerbaijan Time'
   ,'GET--Georgia Standard Time'
   ,'MUT--Mauritius Time'
-  ,'RET--Réunion Time'
+  ,'RET--RÃ©union Time'
   ,'SAMT--Samara Time'
   ,'SCT--Seychelles Time'
   ];
@@ -246,4 +246,3 @@ AnyTime.utcLabel[840]=[
 //
 //END OF FILE
 //
-if(window.location.hostname.length&&(window.location.hostname!='www.ama3.com'))alert('REMOVE THE LAST LINE FROM anytimetz.js!');
