@@ -26,7 +26,7 @@ Given /^the following user records$/ do |table|
 end
 
 Given /^I am signed in as "([^\"]+)"$/ do |username|
-  Given "I am signed in as \"#{username}\" with password \"xxx\""
+  step "I am signed in as \"#{username}\" with password \"xxx\""
 end
 
 Given /^I am signed in as "([^\"]+)" with password "([^\"]+)"$/ do |username, password|

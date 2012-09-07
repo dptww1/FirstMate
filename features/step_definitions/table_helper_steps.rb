@@ -33,7 +33,7 @@ Then /^I should not see a row with "([^\"]*)" and then "([^\"]*)"$/ do |str1, st
   should_throw = false
 
   begin
-    Then "I should see a row with \"#{str1}\" and then \"#{str2}\""
+    step "I should see a row with \"#{str1}\" and then \"#{str2}\""
     should_throw = true
   rescue RSpec::Expectations::ExpectationNotMetError
     # Since we're reversing the sense of the test, this is actually the normal, expected path.
