@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,10 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110510165813) do
+ActiveRecord::Schema.define(:version => 20110805140113) do
 
   create_table "deadline_types", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "game_templates", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "games", :force => true do |t|
@@ -28,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110510165813) do
     t.integer  "created_by"
     t.integer  "side1_cinc"
     t.integer  "side2_cinc"
+    t.integer  "game_template_id"
   end
 
   create_table "orders", :force => true do |t|
@@ -37,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20110510165813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "turn"
+  end
+
+  create_table "phases", :force => true do |t|
+    t.integer  "game_template_id"
+    t.string   "name"
+    t.string   "template"
+    t.string   "permissions"
+    t.integer  "seq_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ships", :force => true do |t|
