@@ -12,22 +12,25 @@
 %table
   %tr
     %th Turn
-    %th Orders
+    - @game.game_template.phases.each do |ph|
+      %th
+        = ph.name
 
   - @game.turn.downto(1).each do |t|
     %tr{:class => [ t % 2 == 0 ? 'even' : 'odd'] }
-    %td
-      = t
-    %td
-      - if @turn == t
-        = form_for @order do |f|
-          = f.text_field :order_text
-          = hidden_field_tag :user_id, @current_user.id
-          = hidden_field :order, :turn, { :value => params[:turn] }
-          = hidden_field_tag :ss_id, @squadrons_ship.id
-          = f.submit "Enter Orders"
-      - else
-        = @squadrons_ship.find_turn_orders(t)
+      %td
+        = t
+      - @game.game_template.phases.each do |ph|
+        %td
+          - if @turn == t
+            = form_for @order do |f|
+              = f.text_field :order_text, :value => ph.template
+              = hidden_field_tag :user_id, @current_user.id
+              = hidden_field :order, :turn, { :value => params[:turn] }
+              = hidden_field_tag :ss_id, @squadrons_ship.id
+              = f.submit "Enter Orders"
+          - else
+            = @squadrons_ship.find_turn_orders(t)
 
 %p
   = link_to "Back to Game", game_path(@game)

@@ -1,10 +1,11 @@
 class Game < ActiveRecord::Base
   belongs_to :deadline_type
+  belongs_to :game_template
   has_many :squadrons
   belongs_to :side1_cinc_user, :class_name => "User", :foreign_key => "side1_cinc"
   belongs_to :side2_cinc_user, :class_name => "User", :foreign_key => "side2_cinc"
 
-  before_create :create_squadrons
+  before_create :initialize_constants
  
   validates :name,             :presence => true, :uniqueness => true
   validates :turn,             :presence => true, :numericality => true
@@ -17,7 +18,7 @@ class Game < ActiveRecord::Base
   attr_accessible :name, :turn, :deadline, :deadline_type
   attr_accessible :deadline_type_id
   attr_accessible :users_games_roles
-  attr_accessible :side1, :side2, :side1_cinc_user, :side2_cinc_user
+  attr_accessible :side1, :side2, :side1_cinc, :side2_cinc, :side1_cinc_user, :side2_cinc_user
   attr_accessible :squadrons
   attr_accessible :created_by
 
@@ -88,9 +89,11 @@ END_QUERY
   end
 
 private
-  def create_squadrons
+  def initialize_constants
     [side1, side2].each do |side_name|
       squadrons << Squadron.new(:seq_num => 0, :name => "Fleet", :side => side_name)
     end
+
+    game_template = GameTemplate.find_by_name "Close Action"
   end
 end
