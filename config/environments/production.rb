@@ -47,4 +47,6 @@ FirstMate::Application.configure do
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
+
+  config.log_tags = [:uuid, :remote_ip]
 end
