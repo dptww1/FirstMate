@@ -2,7 +2,7 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8.rc1'
+gem 'rails', '3.2.8'
 
 gem 'rake', '>= 0.9.2'
 
@@ -11,7 +11,7 @@ gem 'rake', '>= 0.9.2'
 
 gem 'pg'
 gem 'devise'
-gem 'db_populate'
+gem 'db_populate', :git => "git@github.com:dptww1/db-populate.git"
 gem 'formtastic'
 gem 'jquery-rails'
 gem "haml"
@@ -41,7 +41,7 @@ gem "sass"
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'cucumber'
   gem 'rspec-rails'
   gem 'spork'
