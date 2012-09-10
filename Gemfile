@@ -11,6 +11,7 @@ gem 'rake', '>= 0.9.2'
 
 gem 'pg'
 gem 'devise'
+gem 'devise-encryptable'
 gem 'db_populate', :git => "git@github.com:dptww1/db-populate.git"
 gem 'formtastic'
 gem 'jquery-rails'
