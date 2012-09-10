@@ -6,7 +6,7 @@
   = f.inputs :name => "Game Properties" do
     = f.input :name, :as => :string, :input_html => { :size => 40, :maxlength => 40, :readonly => edit_mode == :edit }
     = f.input :turn,                 :input_html => { :size =>  3, :maxlength =>  3 }
-    = f.input :deadline, :as => :string
+    = f.input :deadline, :as => :anytime
     = f.input :deadline_type
 
   = f.inputs :name => "First Side Properties" do
